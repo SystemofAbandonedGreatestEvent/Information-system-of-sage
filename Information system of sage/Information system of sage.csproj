@@ -129,6 +129,7 @@
   <ItemGroup>
     <Content Include="drawable\login.jpg" />
     <Content Include="KJY\guide.txt" />
+    <Content Include="KJY\TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

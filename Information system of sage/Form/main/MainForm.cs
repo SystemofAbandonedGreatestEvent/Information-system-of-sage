@@ -65,6 +65,7 @@ namespace Information_system_of_sage
 
         }
 
+
         #endregion
 
         #region 2. 메뉴 스트럽 편집
@@ -98,7 +99,5 @@ namespace Information_system_of_sage
         #region 9. 툴 스트럽 작업
 
         #endregion
-
-        
     }
 }

@@ -46,3 +46,7 @@ D:\Development Kit\WorkSpace\Visual Studio 2015\Projects\Information system of s
 D:\Development Kit\Projects\Visual Studio 2015\Projects\Information system of sage\Information system of sage\bin\Debug\Information system of sage.exe.config
 D:\Development Kit\Projects\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information system of sage.exe
 D:\Development Kit\Projects\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information system of sage.pdb
+C:\Users\Ilen\Documents\Information-system-of-sage\Information system of sage\bin\Debug\Information system of sage.exe.config
+C:\Users\Ilen\Documents\Information-system-of-sage\Information system of sage\obj\Debug\Information system of sage.exe
+C:\Users\Ilen\Documents\Information-system-of-sage\Information system of sage\obj\Debug\Information system of sage.pdb
+C:\Users\Ilen\Documents\Information-system-of-sage\Information system of sage\obj\Debug\Information system of sage.csprojResolveAssemblyReference.cache

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("바로가기");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("메모");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("새 메모나 분류기준을 추가하십시오.");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("바로가기");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("메모");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("새 메모나 분류기준을 추가하십시오.");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -82,6 +82,20 @@
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.새메모ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.보기방식ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.하나씩보기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.동시에보기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.노트북보기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.페이지서식변경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.인물서식ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.용어서식ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.생물서식ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.아미노산서식ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.자유서식ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.새노트북ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tscMain.BottomToolStripPanel.SuspendLayout();
             this.tscMain.ContentPanel.SuspendLayout();
             this.tscMain.TopToolStripPanel.SuspendLayout();
@@ -189,13 +203,13 @@
             this.treeViewMenu.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.treeViewMenu.Location = new System.Drawing.Point(0, 0);
             this.treeViewMenu.Name = "treeViewMenu";
-            treeNode7.Name = "nodeShortCut";
-            treeNode7.Text = "바로가기";
-            treeNode8.Name = "nodeMemo";
-            treeNode8.Text = "메모";
+            treeNode25.Name = "nodeShortCut";
+            treeNode25.Text = "바로가기";
+            treeNode26.Name = "nodeMemo";
+            treeNode26.Text = "메모";
             this.treeViewMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8});
+            treeNode25,
+            treeNode26});
             this.treeViewMenu.ShowLines = false;
             this.treeViewMenu.Size = new System.Drawing.Size(164, 490);
             this.treeViewMenu.TabIndex = 0;
@@ -205,11 +219,11 @@
             this.treeViewList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewList.Location = new System.Drawing.Point(0, 0);
             this.treeViewList.Name = "treeViewList";
-            treeNode9.ForeColor = System.Drawing.Color.Silver;
-            treeNode9.Name = "nodeTutorial";
-            treeNode9.Text = "새 메모나 분류기준을 추가하십시오.";
+            treeNode27.ForeColor = System.Drawing.Color.Silver;
+            treeNode27.Name = "nodeTutorial";
+            treeNode27.Text = "새 메모나 분류기준을 추가하십시오.";
             this.treeViewList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9});
+            treeNode27});
             this.treeViewList.ShowLines = false;
             this.treeViewList.Size = new System.Drawing.Size(843, 490);
             this.treeViewList.TabIndex = 0;
@@ -234,6 +248,7 @@
             // 
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemNew,
+            this.새노트북ToolStripMenuItem,
             this.menuItemOpen,
             this.toolStripSeparator,
             this.menuItemSave,
@@ -395,12 +410,18 @@
             // 
             // menuView
             // 
+            this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.보기방식ToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.노트북보기ToolStripMenuItem});
             this.menuView.Name = "menuView";
             this.menuView.Size = new System.Drawing.Size(59, 20);
             this.menuView.Text = "보기(&V)";
             // 
             // menuFont
             // 
+            this.menuFont.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.페이지서식변경ToolStripMenuItem});
             this.menuFont.Name = "menuFont";
             this.menuFont.Size = new System.Drawing.Size(60, 20);
             this.menuFont.Text = "서식(&O)";
@@ -538,6 +559,98 @@
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
             // 
+            // 보기방식ToolStripMenuItem
+            // 
+            this.보기방식ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.하나씩보기ToolStripMenuItem,
+            this.동시에보기ToolStripMenuItem});
+            this.보기방식ToolStripMenuItem.Name = "보기방식ToolStripMenuItem";
+            this.보기방식ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.보기방식ToolStripMenuItem.Text = "보기 방식";
+            // 
+            // 하나씩보기ToolStripMenuItem
+            // 
+            this.하나씩보기ToolStripMenuItem.Name = "하나씩보기ToolStripMenuItem";
+            this.하나씩보기ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.하나씩보기ToolStripMenuItem.Text = "하나씩 보기";
+            // 
+            // 동시에보기ToolStripMenuItem
+            // 
+            this.동시에보기ToolStripMenuItem.Name = "동시에보기ToolStripMenuItem";
+            this.동시에보기ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.동시에보기ToolStripMenuItem.Text = "동시에 보기";
+            // 
+            // 노트북보기ToolStripMenuItem
+            // 
+            this.노트북보기ToolStripMenuItem.Name = "노트북보기ToolStripMenuItem";
+            this.노트북보기ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.노트북보기ToolStripMenuItem.Text = "노트북";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // 페이지서식변경ToolStripMenuItem
+            // 
+            this.페이지서식변경ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.인물서식ToolStripMenuItem,
+            this.용어서식ToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.생물서식ToolStripMenuItem,
+            this.아미노산서식ToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.자유서식ToolStripMenuItem});
+            this.페이지서식변경ToolStripMenuItem.Name = "페이지서식변경ToolStripMenuItem";
+            this.페이지서식변경ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.페이지서식변경ToolStripMenuItem.Text = "페이지 서식 변경";
+            // 
+            // 인물서식ToolStripMenuItem
+            // 
+            this.인물서식ToolStripMenuItem.Name = "인물서식ToolStripMenuItem";
+            this.인물서식ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.인물서식ToolStripMenuItem.Text = "인물 서식";
+            // 
+            // 용어서식ToolStripMenuItem
+            // 
+            this.용어서식ToolStripMenuItem.Name = "용어서식ToolStripMenuItem";
+            this.용어서식ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.용어서식ToolStripMenuItem.Text = "용어 서식";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // 생물서식ToolStripMenuItem
+            // 
+            this.생물서식ToolStripMenuItem.Name = "생물서식ToolStripMenuItem";
+            this.생물서식ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.생물서식ToolStripMenuItem.Text = "생물 서식";
+            // 
+            // 아미노산서식ToolStripMenuItem
+            // 
+            this.아미노산서식ToolStripMenuItem.Name = "아미노산서식ToolStripMenuItem";
+            this.아미노산서식ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.아미노산서식ToolStripMenuItem.Text = "아미노산 서식";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            // 
+            // 자유서식ToolStripMenuItem
+            // 
+            this.자유서식ToolStripMenuItem.Name = "자유서식ToolStripMenuItem";
+            this.자유서식ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.자유서식ToolStripMenuItem.Text = "자유 서식";
+            // 
+            // 새노트북ToolStripMenuItem
+            // 
+            this.새노트북ToolStripMenuItem.Name = "새노트북ToolStripMenuItem";
+            this.새노트북ToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.새노트북ToolStripMenuItem.Text = "새 노트북";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -617,5 +730,19 @@
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem 새메모ToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem 보기방식ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 하나씩보기ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 동시에보기ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 노트북보기ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 페이지서식변경ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 인물서식ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 용어서식ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 생물서식ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 아미노산서식ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem 자유서식ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 새노트북ToolStripMenuItem;
     }
 }
