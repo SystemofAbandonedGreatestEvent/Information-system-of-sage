@@ -14,3 +14,11 @@ D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of s
 D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\LoginWindow.g.cs
 D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\MainWindow.baml
 D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\LoginWindow.baml
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Themes\BureauBlack.baml
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Themes\BureauBlue.baml
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Themes\ExpressionDark.baml
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Themes\ExpressionLight.baml
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Themes\ShinyBlue.baml
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Themes\ShinyRed.baml
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Themes\WhistlerBlue.baml
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\App.baml
