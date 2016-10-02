@@ -59,29 +59,29 @@
     <Compile Include="Form\main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\memo\FrmFind.cs">
+    <Compile Include="Form\note\FrmFind.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\memo\FrmFind.Designer.cs">
+    <Compile Include="Form\note\FrmFind.Designer.cs">
       <DependentUpon>FrmFind.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\memo\FrmReplace.cs">
+    <Compile Include="Form\note\FrmReplace.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\memo\FrmReplace.Designer.cs">
+    <Compile Include="Form\note\FrmReplace.Designer.cs">
       <DependentUpon>FrmReplace.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\memo\FormAbout.cs">
+    <Compile Include="Form\note\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\memo\FormAbout.Designer.cs">
+    <Compile Include="Form\note\FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\memo\MemoForm.cs">
+    <Compile Include="Form\note\NoteForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\memo\MemoForm.Designer.cs">
-      <DependentUpon>MemoForm.cs</DependentUpon>
+    <Compile Include="Form\note\NoteForm.Designer.cs">
+      <DependentUpon>NoteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,17 +91,17 @@
     <EmbeddedResource Include="Form\main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\memo\FrmFind.resx">
+    <EmbeddedResource Include="Form\note\FrmFind.resx">
       <DependentUpon>FrmFind.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\memo\FrmReplace.resx">
+    <EmbeddedResource Include="Form\note\FrmReplace.resx">
       <DependentUpon>FrmReplace.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\memo\FormAbout.resx">
+    <EmbeddedResource Include="Form\note\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\memo\MemoForm.resx">
-      <DependentUpon>MemoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Form\note\NoteForm.resx">
+      <DependentUpon>NoteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

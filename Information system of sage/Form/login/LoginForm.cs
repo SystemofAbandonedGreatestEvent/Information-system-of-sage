@@ -57,7 +57,7 @@ namespace Information_system_of_sage
             Accounts accouts = new Accounts();
             if (opAccount.opUser(mtxtLoginId.Text, mtxtLoginPassword.Text) == 0)
             {
-                MemoForm f = new MemoForm();
+                NoteForm f = new NoteForm();
                 f.Show();
                 this.Close();
             }
@@ -66,13 +66,13 @@ namespace Information_system_of_sage
                 int access = accouts.getAccounts(mtxtLoginId.Text, mtxtLoginPassword.Text);
                 if (access == 1)
                 {
-                   MemoForm f = new MemoForm();
+                   NoteForm f = new NoteForm();
                    f.ShowDialog();
                    this.Close();
                 }
                 else if (access == 0)
                 {
-                    MemoForm f = new MemoForm();
+                    NoteForm f = new NoteForm();
                     f.Show();
                     this.Close();
                 }

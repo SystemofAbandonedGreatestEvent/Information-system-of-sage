@@ -1,0 +1,13 @@
+﻿<Window x:Class="SMIS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SMIS"
+        mc:Ignorable="d"
+        Title="SMIS" Height="600" Width="1024" Visibility="Visible" Background="{x:Null}" AutomationProperties.Name="MainFome" Margin="0" UseLayoutRounding="False" Cursor="None">
+    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="822,146,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

@@ -14,6 +14,7 @@ namespace Information_system_of_sage
     {
         #region 0. 전역변수 및 생성자
 
+        NoteForm note = new NoteForm();
         public MainForm()
         {
             InitializeComponent();
@@ -22,17 +23,23 @@ namespace Information_system_of_sage
 
         #region 1. 메뉴 스트럽 파일
         //
-        //새 메모 클릭
+        //새 노트 클릭
         //
         private void menuItemNew_Click(object sender, EventArgs e)  
-        {
-            MemoForm memo = new MemoForm();
-            memo.ShowDialog();
+        {            
+            note.Show();
         }
         //
-        //열기 클릭
+        //새 노트북 클릭
         //
-        private void menuItemOpen_Click(object sender, EventArgs e) 
+        private void menuItemNewNoteBook_Click(object sender, EventArgs e)
+        {
+
+        }
+        //
+        //파일 첨부 클릭
+        //
+        private void menuItemFileAttach_Click(object sender, EventArgs e)
         {
 
         }
@@ -48,12 +55,45 @@ namespace Information_system_of_sage
         //
         private void menuItemPrint_Click(object sender, EventArgs e)
         {
-
+            printDocument.DocumentName = note.txtNote.Text;
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    printDocument.Print();
+                }
+                catch
+                {
+                    MessageBox.Show("인쇄하는 도중에 에러가 발생했습니다.",
+                        "인쇄오류", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
         }
         //
         //인쇄 미리보기클릭
         //
         private void menuItemPreview_Click(object sender, EventArgs e)
+        {
+            printDocument.DocumentName = note.txtNote.Text;
+            if (printPreviewDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    printDocument.Print();
+                }
+                catch
+                {
+                    MessageBox.Show("인쇄하는 도중에 에러가 발생했습니다.",
+                        "인쇄오류", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+        }
+        //
+        //페이지 설정 클릭
+        //
+        private void menuItemPageSetup_Click(object sender, EventArgs e)
         {
 
         }
@@ -62,7 +102,7 @@ namespace Information_system_of_sage
         //
         private void menuItemExit_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
 
@@ -99,5 +139,7 @@ namespace Information_system_of_sage
         #region 9. 툴 스트럽 작업
 
         #endregion
+
+        
     }
 }

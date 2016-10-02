@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Information system of sage", "Information system of sage\Information system of sage.csproj", "{DF3B80C1-A6D3-4F0B-8310-A2AF671C7A7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMIS", "SMIS\SMIS.csproj", "{CC9B0870-7483-493B-8C4C-637FEB7E000B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DF3B80C1-A6D3-4F0B-8310-A2AF671C7A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF3B80C1-A6D3-4F0B-8310-A2AF671C7A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF3B80C1-A6D3-4F0B-8310-A2AF671C7A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC9B0870-7483-493B-8C4C-637FEB7E000B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC9B0870-7483-493B-8C4C-637FEB7E000B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC9B0870-7483-493B-8C4C-637FEB7E000B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC9B0870-7483-493B-8C4C-637FEB7E000B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

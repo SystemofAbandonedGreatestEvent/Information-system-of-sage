@@ -40,7 +40,6 @@ D:\Development Kit\WorkSpace\Visual Studio 2015\Projects\Information system of s
 D:\Development Kit\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.FrmFind.resources
 D:\Development Kit\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.FrmReplace.resources
 D:\Development Kit\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.FormAbout.resources
-D:\Development Kit\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.MemoForm.resources
 D:\Development Kit\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.Properties.Resources.resources
 D:\Development Kit\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information system of sage.csproj.GenerateResource.Cache
 D:\Development Kit\Projects\Visual Studio 2015\Projects\Information system of sage\Information system of sage\bin\Debug\Information system of sage.exe.config
@@ -50,3 +49,18 @@ C:\Users\Ilen\Documents\Information-system-of-sage\Information system of sage\bi
 C:\Users\Ilen\Documents\Information-system-of-sage\Information system of sage\obj\Debug\Information system of sage.exe
 C:\Users\Ilen\Documents\Information-system-of-sage\Information system of sage\obj\Debug\Information system of sage.pdb
 C:\Users\Ilen\Documents\Information-system-of-sage\Information system of sage\obj\Debug\Information system of sage.csprojResolveAssemblyReference.cache
+D:\Development Kit\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.NoteForm.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\bin\Debug\Information system of sage.exe.config
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information system of sage.exe
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information system of sage.pdb
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\bin\Debug\Information system of sage.exe
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\bin\Debug\Information system of sage.pdb
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information system of sage.csprojResolveAssemblyReference.cache
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.LoginForm.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.MainForm.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.FrmFind.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.FrmReplace.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.FormAbout.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.NoteForm.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information_system_of_sage.Properties.Resources.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Information system of sage\obj\Debug\Information system of sage.csproj.GenerateResource.Cache
