@@ -23,17 +23,17 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Button x:Name="button" Content="계정" Margin="10" Background="#FFD85900"/>
-            <Button x:Name="button_Copy" Content="" Margin="10" Grid.Row="1" Background="White"/>
+            <Button x:Name="button_Copy" Content="" Margin="10" Grid.Row="1" Background="White" Foreground="Black"/>
             <Button x:Name="button_Copy1" Content="" Margin="10" Grid.Row="2" Background="#FFD85900"/>
             <Button x:Name="button_Copy2" Content="문의" Margin="10" Grid.Row="2" Grid.Column="5" Background="White" Foreground="Black"/>
             <Button x:Name="button1" Content="검색" Margin="10" Grid.Column="4" Grid.ColumnSpan="2" Background="White" Foreground="Black"/>
-            <Button x:Name="button_Copy3" Content="메시지" Margin="10" Grid.Column="3" Background="#FFD85900"/>
-            <Button x:Name="button_Copy4" Content="" Margin="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FF77ADC7"/>
+            <Button x:Name="button_Copy3" Content="연락처" Margin="10" Grid.Column="3" Background="#FFD85900"/>
+            <Button x:Name="button_Copy4" Content="문서관리" Margin="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FF77ADC7"/>
             <Button x:Name="button_Copy5" Content="" Margin="10" Grid.Column="4" Grid.RowSpan="2" Grid.Row="1" Background="#FF77ADC7"/>
             <Button x:Name="button_Copy6" Content="" Margin="10" Grid.Row="1" Grid.Column="5" Background="#FFD85900"/>
-            <Button x:Name="button1_Copy" Content="" Margin="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Background="White"/>
-            <Button x:Name="button_Copy7" Content="" Margin="10" Grid.Column="3" Grid.Row="2" Background="White"/>
-            <Button x:Name="button_Copy8" Content="" Margin="10" Grid.Column="3" Grid.Row="1" Background="White"/>
+            <Button x:Name="button1_Copy" Content="" Margin="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Background="White" Foreground="Black"/>
+            <Button x:Name="button_Copy7" Content="" Margin="10" Grid.Column="3" Grid.Row="2" Background="White" Foreground="Black"/>
+            <Button x:Name="button_Copy8" Content="프린트" Margin="10" Grid.Column="3" Grid.Row="1" Background="White" Foreground="Black"/>
         </Grid>
     </Grid>
 </Window>
