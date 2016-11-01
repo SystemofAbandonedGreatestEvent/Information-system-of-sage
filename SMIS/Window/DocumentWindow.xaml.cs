@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SMIS
 {
     /// <summary>
-    /// LoginWindow.xaml에 대한 상호 작용 논리
+    /// DocumentWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class DocumentWindow : Window
     {
-        public LoginWindow()
+        public DocumentWindow()
         {
             InitializeComponent();
         }

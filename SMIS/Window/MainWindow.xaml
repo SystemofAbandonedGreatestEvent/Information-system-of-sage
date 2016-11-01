@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SMIS"
         mc:Ignorable="d"
-        Title="SMIS" Height="600" Width="1024" Visibility="Visible" Background="#FF272727" AutomationProperties.Name="MainFome" Margin="0" UseLayoutRounding="False" ResizeMode="CanMinimize">
+       Title="SMIS" Height="600" Width="1024" Visibility="Visible" Background="#FF272727" AutomationProperties.Name="MainFome" Margin="0" UseLayoutRounding="False" 
+        WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
-        <Label x:Name="label" Content="메인메뉴" Margin="10,0,814,505" FontSize="48"/>
-        <Grid Margin="30,69,30,60">
+        <Label x:Name="label" Content="Main Menu" Margin="30,0,0,0" FontSize="48" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Grid Margin="30,90,30,40">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -22,15 +23,15 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="button" Content="계정" Margin="10" Background="#FFD85900"/>
+            <Button x:Name="btn_" Content="계정" Margin="10" Background="#FFD85900"/>
             <Button x:Name="button_Copy" Content="" Margin="10" Grid.Row="1" Background="White" Foreground="Black"/>
             <Button x:Name="button_Copy1" Content="" Margin="10" Grid.Row="2" Background="#FFD85900"/>
-            <Button x:Name="button_Copy2" Content="문의" Margin="10" Grid.Row="2" Grid.Column="5" Background="White" Foreground="Black"/>
-            <Button x:Name="button1" Content="검색" Margin="10" Grid.Column="4" Grid.ColumnSpan="2" Background="White" Foreground="Black"/>
+            <Button x:Name="btn_exit" Content="끝내기" Margin="10" Grid.Row="2" Grid.Column="5" Background="White" Foreground="Black" Click="btn_exit_Click"/>
+            <Button x:Name="btn_serch" Content="검색" Margin="10" Grid.Column="4" Grid.ColumnSpan="2" Background="White" Foreground="Black"/>
             <Button x:Name="button_Copy3" Content="연락처" Margin="10" Grid.Column="3" Background="#FFD85900"/>
-            <Button x:Name="button_Copy4" Content="문서관리" Margin="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FF77ADC7"/>
+            <Button x:Name="btn_document" Content="문서관리" Margin="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FF77ADC7" Click="btn_document_Click"/>
             <Button x:Name="button_Copy5" Content="" Margin="10" Grid.Column="4" Grid.RowSpan="2" Grid.Row="1" Background="#FF77ADC7"/>
-            <Button x:Name="button_Copy6" Content="" Margin="10" Grid.Row="1" Grid.Column="5" Background="#FFD85900"/>
+            <Button x:Name="button_Copy6" Content="문의" Margin="10" Grid.Row="1" Grid.Column="5" Background="#FFD85900"/>
             <Button x:Name="button1_Copy" Content="" Margin="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Background="White" Foreground="Black"/>
             <Button x:Name="button_Copy7" Content="" Margin="10" Grid.Column="3" Grid.Row="2" Background="White" Foreground="Black"/>
             <Button x:Name="button_Copy8" Content="프린트" Margin="10" Grid.Column="3" Grid.Row="1" Background="White" Foreground="Black"/>

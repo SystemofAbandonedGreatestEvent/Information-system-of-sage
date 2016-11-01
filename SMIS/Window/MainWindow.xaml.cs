@@ -20,9 +20,30 @@ namespace SMIS
     /// </summary>
     public partial class MainWindow : Window
     {
+        NavigationService NS;
         public MainWindow()
         {
             InitializeComponent();
+
+            this.MouseLeftButtonDown += Window_MouseLeftButtonDown;
+        }
+       
+       private void btn_document_Click(object sender, RoutedEventArgs e)
+        {
+            //this.NS.Navigate(new Uri("./Document.xaml", UriKind.Relative));
+            //frame_content.Source = new Uri("DocumentPage.xaml", UriKind.Relative);
+            Show()
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)  //창 드래그이동
+        {
+            this.DragMove();
+            e.Handled = true;
+        }
+
+        private void btn_exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

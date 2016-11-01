@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SMIS"
         mc:Ignorable="d"
-        Title="Login" Height="480" Width="800" ResizeMode="CanMinimize" Background="Gray">
+      Title="Login" Height="480" Width="800" ResizeMode="CanMinimize" Background="Gray">
+    <Window.Resources>
+        <ResourceDictionary Source="/Themes/ExpressionDark.xaml" />
+    </Window.Resources>
     <Grid>
         <Image x:Name="image" HorizontalAlignment="Left" Margin="10,10,0,10" Width="501"/>
         <TabControl x:Name="tabControl" Margin="516,10,10,10">
