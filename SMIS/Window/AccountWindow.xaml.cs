@@ -15,22 +15,13 @@ using System.Windows.Shapes;
 namespace SMIS
 {
     /// <summary>
-    /// LoginWindow.xaml에 대한 상호 작용 논리
+    /// AccountWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class AccountWindow : Window
     {
-        public LoginWindow()
+        public AccountWindow()
         {
             InitializeComponent();
-        }
-
-        private void btn_login_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            MainWindow mw = new MainWindow();
-            mw.Owner = Application.Current.MainWindow;
-            mw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            mw.ShowDialog();
         }
     }
 }

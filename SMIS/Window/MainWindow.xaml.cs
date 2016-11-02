@@ -20,8 +20,9 @@ namespace SMIS
     /// </summary>
     public partial class MainWindow : Window
     {
-        NavigationService NS;
-        public MainWindow()
+        Library.WindowPoint P;
+        
+       public MainWindow()
         {
             InitializeComponent();
 
@@ -29,10 +30,12 @@ namespace SMIS
         }
        
        private void btn_document_Click(object sender, RoutedEventArgs e)
-        {
-            //this.NS.Navigate(new Uri("./Document.xaml", UriKind.Relative));
-            //frame_content.Source = new Uri("DocumentPage.xaml", UriKind.Relative);
-            Show()
+        {            
+            this.Hide();
+            DocumentWindow dw = new DocumentWindow();
+            dw.Owner = Application.Current.MainWindow;
+            dw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            dw.Show();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)  //창 드래그이동
@@ -41,7 +44,7 @@ namespace SMIS
             e.Handled = true;
         }
 
-        private void btn_exit_Click(object sender, RoutedEventArgs e)
+        private void btn_exit_Click(object sender, RoutedEventArgs e)   //프로그램 종료
         {
             this.Close();
         }
