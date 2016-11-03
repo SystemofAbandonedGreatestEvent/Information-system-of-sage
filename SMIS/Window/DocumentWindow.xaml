@@ -13,6 +13,23 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
+            <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Text="검색" VerticalAlignment="Top" Margin="2" Background="#FF3F3F46"/>
+            <TreeView x:Name="treeView" Margin="2,30,2,1" Background="#FF272727"/>
+            <Grid Grid.Column="1" Margin="2,2,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="90*"/>
+                </Grid.RowDefinitions>
+                <RichTextBox x:Name="richTextBox" Margin="0,0,0,0" Background="#FF3F3F46" BorderBrush="White" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" Grid.Row="3">
+                    <FlowDocument>
+                        <Paragraph/>
+                    </FlowDocument>
+                </RichTextBox>
+                <TextBox x:Name="textBox1" TextWrapping="Wrap" Text="제목" Margin="0,2,0,2" Background="#FF3F3F46" Grid.Row="1"/>
+            </Grid>
         </Grid>
+        <Button x:Name="btn_home" Content="home" Margin="0,17,17,0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right"/>
     </Grid>
 </Window>
