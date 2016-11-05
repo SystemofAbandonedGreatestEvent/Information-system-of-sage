@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SMIS"
         mc:Ignorable="d"
-      Title="Login" Height="480" Width="800" ResizeMode="CanMinimize" Background="Gray">
+      Title="Login" Height="480" Width="800" ResizeMode="CanMinimize" Background="#272727">
     <Window.Resources>
         <ResourceDictionary Source="/Themes/ExpressionDark.xaml" />
     </Window.Resources>
     <Grid>
         <Image x:Name="image" HorizontalAlignment="Left" Margin="10,10,0,10" Width="501"/>
-        <TabControl x:Name="tabControl" Margin="516,10,10,10">
-            <TabItem Header="Sign up">
+        <TabControl x:Name="tabControl" Margin="516,10,10,10" AutomationProperties.ItemStatus="1" >
+            <TabItem Header="Sign up" AutomationProperties.ItemStatus="">
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -24,7 +24,7 @@
                     <Label x:Name="lbl_02" Content="아이디:" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txt_userID" Height="23" Margin="10,80,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
                     <Label x:Name="lbl_03" Content="비밀번호:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txt_userPW" Height="23" Margin="10,139,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                    <PasswordBox x:Name="txt_userPW" Height="23" Margin="10,139,10,0" VerticalAlignment="Top"/>
                     <Label x:Name="lbl_04" Content="등록을 클릭하면 다음에 동의하는 것입니다:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,167,0,0" FontSize="9" Foreground="#A9A9A9A9" Grid.ColumnSpan="2"/>
                     <Label x:Name="lbl_05" Content="사용약관" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top" Foreground="#A9A9A9A9"/>
                     <Label x:Name="label5" Content="개인정보 보호정책" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Foreground="#A9A9A9A9" Grid.ColumnSpan="2"/>

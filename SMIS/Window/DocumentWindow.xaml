@@ -7,29 +7,53 @@
         mc:Ignorable="d"
         Title="DocumentWindow" Height="600" Width="1024" ResizeMode="NoResize" Background="#FF272727" WindowStyle="None" AllowsTransparency="True">
     <Grid>
-        <Label x:Name="label" Content="Document" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White" />
+        <Label x:Name="label" Content="Document" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White"/>
+        <Button x:Name="btn_home" Content="home" Margin="0,17,17,0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF3F3F46"/>
+
         <Grid Margin="30,90,30,40">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Text="검색" VerticalAlignment="Top" Margin="2" Background="#FF3F3F46"/>
-            <TreeView x:Name="treeView" Margin="2,30,2,1" Background="#FF272727"/>
+
+            <Grid Grid.Column="0" Margin="2,2,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="95*"/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Text="검색" VerticalAlignment="Top" Background="#FF3F3F46"/>
+                <TreeView x:Name="treeView" Margin="0,2,0,0" Background="#FF272727" Grid.Row="1"/>
+            </Grid>
+
             <Grid Grid.Column="1" Margin="2,2,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="15*"/>
                     <RowDefinition Height="90*"/>
                 </Grid.RowDefinitions>
-                <RichTextBox x:Name="richTextBox" Margin="0,0,0,0" Background="#FF3F3F46" BorderBrush="White" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" Grid.Row="3">
+
+                <TextBox x:Name="textBox1" TextWrapping="Wrap" Text="제목" Margin="0,0,0,2" Background="#FF3F3F46" Grid.Row="0" FontSize="26"/>
+                <ToolBarTray Background="#FF272727" Margin="0,2,0,2" Grid.Row="1">
+                    <ToolBar Band="1" BandIndex="1" Margin="0,2,0,2" Height="25" Background="#FF272727">
+                        <Button Content="New" Foreground="White"/>
+                        <Separator Foreground="White"/>
+                        <ComboBox Foreground="White"/>
+                        <CheckBox Content="AutoSave" Foreground="White"/>
+                    </ToolBar>
+                    <ToolBar Band="2" BandIndex="1" Margin="0,2,0,2" Height="25" Background="#FF272727">
+                        <Button Content="New" Foreground="White"/>
+                        <Separator Foreground="White"/>
+                        <ComboBox Foreground="White"/>
+                        <CheckBox Content="AutoSave" Foreground="White"/>
+                    </ToolBar>
+                </ToolBarTray>
+                <RichTextBox x:Name="richTextBox" Margin="0,2,0,0" Background="#FF3F3F46" BorderBrush="White" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" Grid.Row="2" Block.LineHeight="2">
                     <FlowDocument>
                         <Paragraph/>
                     </FlowDocument>
                 </RichTextBox>
-                <TextBox x:Name="textBox1" TextWrapping="Wrap" Text="제목" Margin="0,2,0,2" Background="#FF3F3F46" Grid.Row="1"/>
+
             </Grid>
         </Grid>
-        <Button x:Name="btn_home" Content="home" Margin="0,17,17,0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right"/>
     </Grid>
 </Window>
