@@ -51,8 +51,8 @@ D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of s
 D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\ContactWindow.g.cs
 D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\AccountWindow.baml
 D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\ContactWindow.baml
-D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\obj\Debug\SMIS.csprojResolveAssemblyReference.cache
 D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\AccountWindow.g.cs
 D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\ContactWindow.g.cs
 D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\AccountWindow.baml
 D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\ContactWindow.baml
+D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\obj\Debug\SMIS.csprojResolveAssemblyReference.cache

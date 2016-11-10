@@ -20,6 +20,7 @@ namespace SMIS
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region 1. 전역변수 및 생성자
         Library.WindowPoint P;
         
        public MainWindow()
@@ -28,8 +29,33 @@ namespace SMIS
 
             this.MouseLeftButtonDown += Window_MouseLeftButtonDown;
         }
-       
-       private void btn_document_Click(object sender, RoutedEventArgs e)
+        #endregion
+
+        //창 드래그이동
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)  
+        {
+            this.DragMove();
+            e.Handled = true;
+        }
+
+        //프로그램 종료
+        private void btn_exit_Click(object sender, RoutedEventArgs e)   
+        {
+            this.Close();
+        }
+
+        //계정관리창 열기
+        private void btn_account_Click(object sender, RoutedEventArgs e)    
+        {
+            this.Hide();
+            AccountWindow aw = new AccountWindow();
+            aw.Owner = Application.Current.MainWindow;
+            aw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            aw.Show();
+        }
+
+        //문서관리창 열기
+        private void btn_document_Click(object sender, RoutedEventArgs e)   
         {            
             this.Hide();
             DocumentWindow dw = new DocumentWindow();
@@ -38,15 +64,14 @@ namespace SMIS
             dw.Show();
         }
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)  //창 드래그이동
+        //연락관리창 열기
+        private void btn_contact_Click(object sender, RoutedEventArgs e)
         {
-            this.DragMove();
-            e.Handled = true;
-        }
-
-        private void btn_exit_Click(object sender, RoutedEventArgs e)   //프로그램 종료
-        {
-            this.Close();
+            this.Hide();
+            ContactWindow cw = new ContactWindow();
+            cw.Owner = Application.Current.MainWindow;
+            cw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            cw.Show();
         }
     }
 }
