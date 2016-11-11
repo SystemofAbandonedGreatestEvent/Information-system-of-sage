@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SMIS"
         mc:Ignorable="d"
-        Title="DocumentWindow" Height="600" Width="1024" ResizeMode="NoResize" Background="#FF272727" WindowStyle="None" AllowsTransparency="True">
+        Title="DocumentWindow" Height="600" Width="1024" ResizeMode="NoResize" Background="#FF272727" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
-        <Label x:Name="lbl_01" Content="Document" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White"/>
+        <Label Content="Document" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White"/>
         <Button x:Name="btn_home" Content="home" Margin="0,17,17,0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF3F3F46" Click="btn_home_Click"/>
 
         <Grid Margin="30,90,30,40">
@@ -31,18 +31,18 @@
                     <RowDefinition Height="15*"/>
                     <RowDefinition Height="90*"/>
                 </Grid.RowDefinitions>
-
+                
                 <TextBox x:Name="txt_title" TextWrapping="Wrap" Text="제목" Margin="0,0,0,2" Background="#FF3F3F46" Grid.Row="0" FontSize="26"/>
                 <ToolBarTray Background="#FF272727" Margin="0,2,0,2" Grid.Row="1">
                     <ToolBar Band="0" Margin="0,2,-402,2" Height="25" Background="#FF272727" HorizontalAlignment="Left" Width="641">
-                        <ComboBox Foreground="Black" Width="120"/>
+                        <ComboBox x:Name="cmb_selectCategory" Foreground="Black" Width="200"/>
+                        <Button x:Name="btn_addCategory" Content="분류추가" Foreground="White" Margin="2,0,2,0"/>
                         <Separator Foreground="White"/>
-                        <Button Content="태그 추가" Foreground="White"/>                        
-                        <Button Content="" Foreground="White" Width="360" IsEnabled="False"/>
-                        <Button x:Name="lbl_nowTime" Foreground="White" IsEnabled="False"/>
+                        <TextBox x:Name="txt_tag" Text="태그 추가" Background="#FF272727" Foreground="White" Width="120" BorderThickness="0" GotFocus="txt_tag_GotFocus" LostFocus="txt_tag_LostFocus"/>                        
+                        <Button x:Name="lbl_nowTime" Foreground="White" IsEnabled="False" HorizontalAlignment="Right" Margin="160,0,0,0"/>
                     </ToolBar>
                     <ToolBar Band="1" Margin="0,2,-507,2" Height="25" Background="#FF272727" HorizontalAlignment="Left" Width="641">
-                        <ComboBox x:Name="cmb_fontFamily" Foreground="Black" Width="160" SelectionChanged="cmb_fontFamily_SelectionChanged"/>
+                        <ComboBox x:Name="cmb_fontFamily" Foreground="Black" Width="130" SelectionChanged="cmb_fontFamily_SelectionChanged"/>
                         <ComboBox x:Name="cmb_fontSize" Foreground="Black" Width="50" IsEditable="True" TextBoxBase.TextChanged="cmb_fontSize_TextChanged" />
                         <ToggleButton x:Name="btn_bold" Content="굵게" Foreground="White" Command="EditingCommands.ToggleBold"/>
                         <ToggleButton x:Name="btn_italic" Content="기울임꼴" Foreground="White" Command="EditingCommands.ToggleItalic"/>

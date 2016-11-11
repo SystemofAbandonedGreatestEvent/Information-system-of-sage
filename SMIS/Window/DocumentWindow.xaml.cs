@@ -23,6 +23,7 @@ namespace SMIS
         public DocumentWindow()
         {
             InitializeComponent();
+            this.MouseLeftButtonDown += Window_MouseLeftButtonDown; //창이동
             lbl_nowTime.Content = DateTime.Now.ToString("yyyy-MM-dd");  //현재날짜
 
             /// <summary>
@@ -34,6 +35,13 @@ namespace SMIS
         }
         #endregion
 
+        //창이동
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+            e.Handled = true;
+        }
+
         //메인메뉴로 가기
         private void btn_home_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +50,18 @@ namespace SMIS
             mw.Owner = Application.Current.MainWindow;
             mw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             mw.Show();
+        }
+
+        private void txt_tag_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_tag.BorderThickness = new Thickness(1);
+            txt_tag.Text = "";
+        }
+
+        private void txt_tag_LostFocus(object sender, RoutedEventArgs e)
+        {
+            txt_tag.BorderThickness = new Thickness(0);
+            txt_tag.Text = "태그 추가";
         }
 
         #region 3. 도구창
@@ -73,6 +93,9 @@ namespace SMIS
             if (cmb_fontFamily.SelectedItem != null)
                 rtb_editor.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cmb_fontFamily.SelectedItem);
         }
+
         #endregion
+
+        
     }
 }
