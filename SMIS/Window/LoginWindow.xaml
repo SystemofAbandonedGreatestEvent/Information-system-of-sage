@@ -10,9 +10,9 @@
         <ResourceDictionary Source="/Themes/ExpressionDark.xaml" />
     </Window.Resources>
     <Grid>
-        <Image x:Name="image" HorizontalAlignment="Left" Margin="10,10,0,10" Width="501"/>
-        <TabControl x:Name="tabControl" Margin="516,10,10,10" AutomationProperties.ItemStatus="1" >
-            <TabItem Header="Sign up" AutomationProperties.ItemStatus="">
+        <Image x:Name="img" HorizontalAlignment="Left" Margin="10,10,0,10" Width="501"/>
+        <TabControl x:Name="tbc_sign" Margin="516,10,10,10" SelectedIndex="1">
+            <TabItem Header="Sign up" >
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -20,25 +20,25 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
                 <Grid Background="DimGray">
-                    <Label x:Name="lbl_01" Content="계정 등록하기" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-                    <Label x:Name="lbl_02" Content="아이디:" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txt_userID" Height="23" Margin="10,80,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_03" Content="비밀번호:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top"/>
-                    <PasswordBox x:Name="txt_userPW" Height="23" Margin="10,139,10,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_04" Content="등록을 클릭하면 다음에 동의하는 것입니다:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,167,0,0" FontSize="9" Foreground="#A9A9A9A9" Grid.ColumnSpan="2"/>
+                    <Label Content="계정 등록하기" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+                    <Label Content="아이디:" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txt_signupID" Height="23" Margin="10,80,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MaxLength="30" TextChanged="txt_signupID_TextChanged"/>
+                    <Label Content="비밀번호:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top"/>
+                    <PasswordBox x:Name="txt_signupPW" Height="23" Margin="10,139,10,0" VerticalAlignment="Top" MaxLength="30" PasswordChanged="txt_signupPW_PasswordChanged"/>
+                    <Label Content="등록을 클릭하면 다음에 동의하는 것입니다:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,167,0,0" FontSize="9" Foreground="#A9A9A9A9" Grid.ColumnSpan="2"/>
                     <Label x:Name="lbl_05" Content="사용약관" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top" Foreground="#A9A9A9A9"/>
                     <Label x:Name="label5" Content="개인정보 보호정책" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Foreground="#A9A9A9A9" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btn_signUp" Content="등록하기" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btn_signUp" Content="등록하기" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btn_signUp_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Login">
                 <Grid Background="DimGray">
-                    <Label x:Name="label" Content="로그인" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-                    <Label x:Name="label1" Content="아이디:" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="textBox" Height="23" Margin="10,80,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-                    <Label x:Name="label2" Content="비밀번호:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.993,1.256"/>
-                    <TextBox x:Name="textBox_Copy" Height="23" Margin="10,139,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-                    <Button x:Name="btn_login" Content="로그인" Margin="183,167,10,0" VerticalAlignment="Top" Click="btn_login_Click"/>
+                    <Label Content="로그인" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+                    <Label Content="아이디:" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txt_signinID" Height="23" Margin="10,80,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MaxLength="30" TextChanged="txt_signinID_TextChanged"/>
+                    <Label Content="비밀번호:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.993,1.256"/>
+                    <PasswordBox x:Name="txt_signinPW" Height="23" Margin="10,139,10,0" VerticalAlignment="Top" MaxLength="30" PasswordChanged="txt_signinPW_PasswordChanged"/>
+                    <Button x:Name="btn_login" Content="로그인" Margin="183,167,10,0" VerticalAlignment="Top" IsEnabled="False" Click="btn_login_Click"/>
                 </Grid>
             </TabItem>
 

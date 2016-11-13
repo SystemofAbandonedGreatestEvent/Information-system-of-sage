@@ -56,3 +56,5 @@ D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\o
 D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\AccountWindow.baml
 D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\ContactWindow.baml
 D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\obj\Debug\SMIS.csprojResolveAssemblyReference.cache
+D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\bin\Debug\MySql.Data.dll
+D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\bin\Debug\MySql.Data.xml

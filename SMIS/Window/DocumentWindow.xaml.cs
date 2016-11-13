@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace SMIS
 {
@@ -20,6 +22,9 @@ namespace SMIS
     public partial class DocumentWindow : Window
     {
         #region 1.전역 변수 및 생성자
+
+        DBControl dbcon = new DBControl();
+
         public DocumentWindow()
         {
             InitializeComponent();
@@ -51,7 +56,7 @@ namespace SMIS
             mw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             mw.Show();
         }
-
+        #region 2. 분류 및 태그
         private void txt_tag_GotFocus(object sender, RoutedEventArgs e)
         {
             txt_tag.BorderThickness = new Thickness(1);
@@ -63,6 +68,7 @@ namespace SMIS
             txt_tag.BorderThickness = new Thickness(0);
             txt_tag.Text = "태그 추가";
         }
+        #endregion
 
         #region 3. 도구창
         //컨텍스 박스 상태 체크
@@ -94,8 +100,10 @@ namespace SMIS
                 rtb_editor.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cmb_fontFamily.SelectedItem);
         }
 
-        #endregion
-
-        
+        private void btn_save_Click(object sender, RoutedEventArgs e)
+        {
+            //dbcon.Insert();
+        }
+        #endregion       
     }
 }
