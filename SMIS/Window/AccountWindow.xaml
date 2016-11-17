@@ -5,23 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SMIS"
         mc:Ignorable="d"
-        Title="AccountWindow" Height="600" Width="1024" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" Background="#FF272727">
+        Title="AccountWindow" Height="600" Width="1024" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" Background="#FF272727" 
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" Loaded="Window_Loaded">
     <Grid>
-        <Label x:Name="label" Content="Account" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White" />
-        <Button x:Name="btn_home" Content="home" Margin="0,17,17,0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF3F3F46"/>
+        <Label Content="Account" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White" />
+        <Button x:Name="btn_home" Content="home" Margin="0,17,17,0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF3F3F46" Click="btn_home_Click"/>
 
         <Grid Margin="30,90,30,40">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="image" Height="256" Margin="33,10,33,0" VerticalAlignment="Top"/>
-            <Label x:Name="label1" Content="사진 변경" HorizontalAlignment="Left" Margin="33,271,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+            <Image x:Name="img_profile" Height="256" Margin="33,10,33,0" VerticalAlignment="Top"/>
+            <Button x:Name="btn_profileChage" Content="사진 변경" HorizontalAlignment="Left" Margin="33,271,0,0" VerticalAlignment="Top" 
+                    Background="#FF272727" Foreground="White" BorderThickness="0" FontSize="14" Click="btn_profileChage_Click"/>
 
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -34,31 +36,45 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <Label x:Name="label1_Copy" Content="닉네임" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White"/>
-                <Label x:Name="label1_Copy1" Content="계정" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="White" Grid.Row="1" Height="26" VerticalAlignment="Top"/>
-                <Label x:Name="label1_Copy3" Content="상태" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" Grid.Row="2"/>
-                <Label x:Name="label1_Copy7" Content="상태 메세지" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row="3" Margin="10,0,0,0"/>
-                <Label x:Name="label1_Copy5" Content="휴대 전화" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row="4" Margin="10,0,0,0"/>
-                <Label x:Name="label1_Copy6" Content="집 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" Grid.Row="6"/>
-                <Label x:Name="label1_Copy2" Content="회사 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" Grid.Row="5"/>
-                <Label x:Name="label1_Copy4" Content="이메일" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" Grid.Row="7"/>
-                <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="#FF3F3F46"/>
-                <TextBox x:Name="textBox_Copy" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="1"/>
-                <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="120" Grid.Row="2"/>
-                <TextBox x:Name="textBox_Copy1" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="3"/>
-                <TextBox x:Name="textBox_Copy2" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="4"/>
-                <TextBox x:Name="textBox_Copy3" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="243,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="5"/>
-                <TextBox x:Name="textBox_Copy4" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="243,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="6"/>
-                <TextBox x:Name="textBox_Copy5" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="243,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="7"/>
-                <Label x:Name="label1_Copy8" Content="닉네임" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1"/>
-                <Label x:Name="label1_Copy9" Content="계정" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="1"/>
-                <Label x:Name="label1_Copy10" Content="상태 메세지" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="3"/>
-                <Label x:Name="label1_Copy11" Content="휴대 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="4"/>
-                <Label x:Name="label1_Copy12" Content="집 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="6" Grid.RowSpan="2"/>
-                <Label x:Name="label1_Copy13" Content="회사 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="5"/>
-                <Label x:Name="label1_Copy14" Content="이메일" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="7" Margin="10,0,0,-8"/>
-                <Button x:Name="button" Content="수정" Grid.Column="1" HorizontalAlignment="Left" Margin="243,74,0,0" VerticalAlignment="Top" Width="75" Grid.Row="8"/>
-                <Button x:Name="button_Copy" Content="저장" Grid.Column="1" HorizontalAlignment="Left" Margin="356,74,0,0" VerticalAlignment="Top" Width="75" Grid.Row="8"/>
+                <Label Content="닉네임:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray"/>
+                <Label Content="계정:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray" Grid.Row="1"/>
+                <Label Content="상태:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray" Grid.Row="2"/>
+                <Label Content="상태 메세지:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray" Grid.Row="3"/>
+                <Label Content="휴대 전화:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray" Grid.Row="4"/>
+                <Label Content="집 전화:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray" Grid.Row="6"/>
+                <Label Content="회사 전화:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray" Grid.Row="5"/>
+                <Label Content="이메일:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray" Grid.Row="7"/>
+                <!-- 
+                     /// <summary>
+                     /// 사용자의 정보를 표시
+                     /// </summary>
+                -->
+                <Label x:Name="lbl_nickname" Content="닉네임" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Grid.Column="1"/>
+                <Label x:Name="lbl_account" Content="계정" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="1"/>
+                <Label x:Name="lbl_statemessage" Content="상태 메세지" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="3"/>
+                <Label x:Name="lbl_phoneNum" Content="휴대 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="4"/>
+                <Label x:Name="lbl_companyNum" Content="회사 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="5"/>
+                <Label x:Name="lbl_homeNum" Content="집 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="6"/>
+                <Label x:Name="lbl_Email" Content="이메일" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="7"/>
+                <!-- 
+                     /// <summary>
+                     /// 사용자의 정보 수정창
+                     /// </summary>
+                -->
+                <TextBox x:Name="txt_nickname" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Visibility="Hidden"/>
+                <ComboBox x:Name="cmb_state" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="120" Grid.Row="2"/>
+                <TextBox x:Name="txt_statemessage" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="3" Visibility="Hidden"/>
+                <TextBox x:Name="txt_phoneNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="4" Visibility="Hidden"/>
+                <TextBox x:Name="txt_companyNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="5" Visibility="Hidden"/>
+                <TextBox x:Name="txt_homeNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="6" Visibility="Hidden"/>
+                <TextBox x:Name="txt_Email" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="7" Visibility="Hidden"/>
+                <!-- 
+                     /// <summary>
+                     /// 사용자의 정보를 수정, 저장하는 버튼
+                     /// </summary>
+                -->
+                <Button x:Name="btn_modify" Content="수정" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,80,0" VerticalAlignment="Bottom" Width="75" Grid.Row="8" Click="btn_modify_Click"/>
+                <Button x:Name="btn_save" Content="저장" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,80,0" VerticalAlignment="Bottom" Width="75" Grid.Row="8" Visibility="Hidden" Click="btn_save_Click"/>
             </Grid>
         </Grid>
     </Grid>

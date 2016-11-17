@@ -28,26 +28,26 @@ namespace SMIS
         public DocumentWindow()
         {
             InitializeComponent();
-            this.MouseLeftButtonDown += Window_MouseLeftButtonDown; //창이동
-            lbl_nowTime.Content = DateTime.Now.ToString("yyyy-MM-dd");  //현재날짜
+            this.MouseLeftButtonDown += Window_MouseLeftButtonDown; ///창이동
+            lbl_nowTime.Content = DateTime.Now.ToString("yyyy-MM-dd");  ///현재날짜
 
             /// <summary>
             /// 도구창에 대한 상호 작용 논리
             /// </summary>
-            cmb_fontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);   //폰트스타일
-            cmb_fontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 }; //폰트사이즈
+            cmb_fontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);   ///폰트스타일
+            cmb_fontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 }; ///폰트사이즈
 
         }
         #endregion
 
-        //창이동
+        ///창이동
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
             e.Handled = true;
         }
 
-        //메인메뉴로 가기
+        ///메인메뉴로 가기
         private void btn_home_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -56,6 +56,7 @@ namespace SMIS
             mw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             mw.Show();
         }
+
         #region 2. 분류 및 태그
         private void txt_tag_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -71,7 +72,7 @@ namespace SMIS
         #endregion
 
         #region 3. 도구창
-        //컨텍스 박스 상태 체크
+        ///컨텍스 박스 상태 체크
         private void rtb_editor_SelectionChanged(object sender, RoutedEventArgs e)
         {
             object temp = rtb_editor.Selection.GetPropertyValue(Inline.FontWeightProperty);
@@ -87,13 +88,13 @@ namespace SMIS
             cmb_fontSize.Text = temp.ToString();
         }
 
-        //폰트 사이즈 조절
+        ///폰트 사이즈 조절
         private void cmb_fontSize_TextChanged(object sender, TextChangedEventArgs e)
         {
             rtb_editor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmb_fontSize.Text);
         }
 
-        //폰트 스타일 변경
+        ///폰트 스타일 변경
         private void cmb_fontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmb_fontFamily.SelectedItem != null)
@@ -102,7 +103,7 @@ namespace SMIS
 
         private void btn_save_Click(object sender, RoutedEventArgs e)
         {
-            //dbcon.Insert();
+            ///dbcon.Insert();
         }
         #endregion       
     }

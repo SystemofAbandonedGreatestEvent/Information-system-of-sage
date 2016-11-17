@@ -22,13 +22,16 @@ namespace SMIS
         #region 1. 전역 변수 및 생성자
         
         DBControl dbcon = new DBControl();
+        Library libarary;
         bool IDCheck = false;
         bool PWCheck = false;
         bool IDLogCheck = false;
         bool PWLogCheck = false;
+
         public LoginWindow()
         {
             InitializeComponent();
+            libarary = Library.GetInstance();
         }
         #endregion
 
@@ -108,10 +111,11 @@ namespace SMIS
             string ID = txt_signinID.Text;
             string PW = txt_signinPW.Password;
             String sql = "select * from user where ID='"+ID+"'";
-            int loginCheck = dbcon.LoginCheck(ID, PW, sql);
+            int loginCheck = dbcon.CheckLogin(ID, PW, sql);
 
             if (loginCheck.Equals(0))   //ID와 Password 둘 다 맞을때
             {
+                libarary.set_userID(ID);
                 this.Hide();
                 MainWindow mw = new MainWindow();
                 mw.Owner = Application.Current.MainWindow;
@@ -159,7 +163,6 @@ namespace SMIS
             else
                 MessageBox.Show("err: wrong string input");
         }
-
-
+        
     }
 }
