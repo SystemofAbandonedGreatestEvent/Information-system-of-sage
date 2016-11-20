@@ -21,26 +21,18 @@ namespace SMIS
     public partial class AccountWindow : Window
     {
         #region 1. 전역 변수 및 생성자
-        DBControl dbcon = new DBControl();
+        DatabaseControl dbcon = new DatabaseControl();
         Library libarary;
         string account; /// 유저의 계정
-                        /// <summary>
-                        /// userinfo[0]: 닉네임
-                        /// userinfo[1]: 상태메시지
-                        /// userinfo[2]: 휴대폰 번호
-                        /// userinfo[3]: 회사 번호
-                        /// userinfo[4]: 집전화 번호
-                        /// userinfo[5]: 이메일
-                        /// </summary>
-        string[] userinfo = new string[6];
+        string[] userinfo = new string[6];  ///userinfo[0~5]: 닉네임, 상태메시지, 휴대폰 번호, 회사 번호, 집전화 번호, 이메일
 
         public AccountWindow()
         {
             InitializeComponent();
             libarary = Library.GetInstance();
-            account = libarary.get_userID();    //유저아이디 받기
-            this.MouseLeftButtonDown += Window_MouseLeftButtonDown; //창이동            
-            cmb_state.ItemsSource = libarary.state; //상태값 불러오기            
+            account = libarary.get_userID();    ///유저아이디 받기
+            this.MouseLeftButtonDown += Window_MouseLeftButtonDown; ///창이동            
+            cmb_state.ItemsSource = libarary.state; ///상태값 불러오기            
         }
         #endregion
 
@@ -59,16 +51,16 @@ namespace SMIS
             mw.Show();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)    ///창 로드시
         {
-            ViewUserProfile();  //유저프로필 이미지 뷰
+            ViewUserProfile();  ///유저프로필 이미지 뷰
 
-            ViewUserInfo(); //유저 프로필 정보 뷰
-        }   //창 로드시
+            ViewUserInfo(); ///유저 프로필 정보 뷰
+        }   
 
-        private void btn_modify_Click(object sender, RoutedEventArgs e) //유저 프로필 정보 수정버튼
+        private void btn_modify_Click(object sender, RoutedEventArgs e) ///유저 프로필 정보 수정버튼
         {
-            //버튼 숨기기 및 보이기
+            ///버튼 숨기기 및 보이기
             btn_modify.Visibility = Visibility.Hidden;
             btn_save.Visibility = Visibility.Visible;
 
@@ -79,7 +71,7 @@ namespace SMIS
             txt_homeNum.Text = userinfo[4];
             txt_Email.Text = userinfo[5];
 
-            //수정텍스트박스 보이기
+            ///수정텍스트박스 보이기
             txt_nickname.Visibility = Visibility.Visible;
             txt_statemessage.Visibility = Visibility.Visible;
             txt_phoneNum.Visibility = Visibility.Visible;
@@ -88,9 +80,9 @@ namespace SMIS
             txt_Email.Visibility = Visibility.Visible;
         }
 
-        private void btn_save_Click(object sender, RoutedEventArgs e)   //유저 프로필 정보 저장
+        private void btn_save_Click(object sender, RoutedEventArgs e)   ///유저 프로필 정보 저장
         {
-            //버튼 숨기기 및 보이기
+            ///버튼 숨기기 및 보이기
             btn_save.Visibility = Visibility.Hidden;
             btn_modify.Visibility = Visibility.Visible;
             String sql = UpdateuserinfoSql();
@@ -108,7 +100,7 @@ namespace SMIS
             ViewUserInfo();
         }
 
-        private void btn_profileChage_Click(object sender, RoutedEventArgs e)   //유저 프로필 사진 수정버튼
+        private void btn_profileChage_Click(object sender, RoutedEventArgs e)   ///유저 프로필 사진 수정버튼
         {
             OpenFileDialog ofd = new OpenFileDialog();
 
@@ -126,7 +118,7 @@ namespace SMIS
             }
         }
 
-        private String UpdateuserinfoSql()
+        private String UpdateuserinfoSql()  ///유저정보 db업데이트 쿼리
         {
             string tempNickname, tempStatemessage, tempPhonenum, tempCompanynum, temphomenum, tempEmail;
             bool flag = false;
@@ -175,9 +167,9 @@ namespace SMIS
                 temphomenum != "" && tempEmail != "")
                 sql = "unknown";
             return sql;
-        }   //유저정보 db업데이트 쿼리
+        }   
 
-        private static void checkUpdatequarry(ref bool flag, ref string sql)    //여러 update쿼리시 ,설정
+        private static void checkUpdatequarry(ref bool flag, ref string sql)    ///여러 update쿼리시 ,설정
         {
             if (flag == true)
                 sql += ", ";
@@ -185,7 +177,7 @@ namespace SMIS
                 flag = true;
         }
 
-        private void ViewUserProfile()  //유저의 프로필 이미지를 보여줌
+        private void ViewUserProfile()  ///유저의 프로필 이미지를 보여줌
         {
             bool IsDefaultprofileImg = dbcon.IsNull_UserImg(account);
             Image img = new Image();
@@ -201,7 +193,7 @@ namespace SMIS
             img_profile.Source = img.Source;
         }
 
-        private void ViewUserInfo() //유저의 정보를 라벨에 보여주기
+        private void ViewUserInfo() ///유저의 정보를 라벨에 보여주기
         {
             String sql = "select * from user where ID='" + account + "'";
 

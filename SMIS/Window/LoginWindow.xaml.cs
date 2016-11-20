@@ -21,7 +21,7 @@ namespace SMIS
     {
         #region 1. 전역 변수 및 생성자
         
-        DBControl dbcon = new DBControl();
+        DatabaseControl dbcon = new DatabaseControl();
         Library libarary;
         bool IDCheck = false;
         bool PWCheck = false;
@@ -36,11 +36,12 @@ namespace SMIS
         #endregion
 
         #region 2. 회원가입 탭
+
         private void btn_signUp_Click(object sender, RoutedEventArgs e)
         {
             string ID = txt_signupID.Text;
             string PW = txt_signupPW.Password;
-            String sql = "insert into user (ID, Password) values ('" + ID + "', '" + PW + "')";
+            string sql = "insert into user (ID, Password) values ('" + ID + "', '" + PW + "')";
             dbcon.CreactUpdateDelete(sql);
 
             MessageBox.Show("sign up completed...");
@@ -163,6 +164,5 @@ namespace SMIS
             else
                 MessageBox.Show("err: wrong string input");
         }
-        
     }
 }

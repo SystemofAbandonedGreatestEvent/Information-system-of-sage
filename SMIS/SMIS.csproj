@@ -84,6 +84,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DatabaseControl.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="Window\AccountWindow.xaml.cs">
       <DependentUpon>AccountWindow.xaml</DependentUpon>
