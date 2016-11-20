@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SMIS"
         mc:Ignorable="d"
-        Title="ContactWindow" Height="600" Width="1024" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" Background="#FF272727" Loaded="Window_Loaded">
+        Title="ContactWindow" Height="600" Width="1024" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" Background="#FF272727" Loaded="Window_Loaded" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
         <Label Content="Contact" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White" />
-        <Button x:Name="btn_home" Content="home" Margin="0,17,17,0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF3F3F46"/>
+        <Button x:Name="btn_home" Content="home" Margin="0,17,17,0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF3F3F46" Click="btn_home_Click"/>
         <Grid Margin="30,90,30,40">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>

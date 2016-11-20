@@ -110,8 +110,8 @@ namespace SMIS
             if (ofd.ShowDialog() == true)
             {
                 string FileName = ofd.FileName;
-                img_profile.Source = new BitmapImage(new Uri(ofd.FileName,UriKind.Absolute));
-                img_profile.Tag = ofd.FileName;
+                img_thumbnail.Source = new BitmapImage(new Uri(ofd.FileName,UriKind.Absolute));
+                img_thumbnail.Tag = ofd.FileName;
                 
                 dbcon.UpdateUserImg(account, FileName);
                 ViewUserProfile();
@@ -139,7 +139,7 @@ namespace SMIS
             if (tempStatemessage != "")
             {
                 checkUpdatequarry(ref flag, ref sql);
-                sql += "Statemessage = '" + txt_statemessage.Text + "'";
+                sql += "Comment = '" + txt_statemessage.Text + "'";
             }
             if (tempPhonenum != "")
             {
@@ -161,7 +161,7 @@ namespace SMIS
                 checkUpdatequarry(ref flag, ref sql);
                 sql += "Email = '" + txt_Email.Text + "'";
             }
-            sql += " where ID='" + account + "'";
+            sql += " where UserId='" + account + "'";
 
             if (tempNickname != "" && tempStatemessage != "" && tempPhonenum != "" && tempCompanynum != "" &&
                 temphomenum != "" && tempEmail != "")
@@ -190,18 +190,18 @@ namespace SMIS
             }
             img.Width = 256;
             img.Height = 256;
-            img_profile.Source = img.Source;
+            img_thumbnail.Source = img.Source;
         }
 
         private void ViewUserInfo() ///유저의 정보를 라벨에 보여주기
         {
-            String sql = "select * from user where ID='" + account + "'";
+            String sql = "select * from user where UserId='" + account + "'";
 
             dbcon.LoadUserInfo(account, sql, ref userinfo);
 
             lbl_nickname.Content = userinfo[0];
             lbl_account.Content = account;
-            lbl_statemessage.Content = userinfo[1];
+            lbl_comment.Content = userinfo[1];
             lbl_phoneNum.Content = userinfo[2];
             lbl_companyNum.Content = userinfo[3];
             lbl_homeNum.Content = userinfo[4];

@@ -85,6 +85,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatabaseControl.cs" />
+    <Compile Include="Entities\DocumentEntity.cs" />
+    <Compile Include="Entities\FriendsEntity.cs" />
+    <Compile Include="Entities\MessageEntity.cs" />
+    <Compile Include="Entities\CategotyEntity.cs" />
+    <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="Window\AccountWindow.xaml.cs">
       <DependentUpon>AccountWindow.xaml</DependentUpon>

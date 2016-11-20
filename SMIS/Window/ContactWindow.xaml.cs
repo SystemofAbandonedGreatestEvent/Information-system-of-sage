@@ -22,11 +22,27 @@ namespace SMIS
         public ContactWindow()
         {
             InitializeComponent();
+            this.MouseLeftButtonDown += Window_MouseLeftButtonDown; ///창이동
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+           lsb_contacts.ItemsSource = 
+        }
 
+        private void btn_home_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            MainWindow mw = new MainWindow();
+            mw.Owner = Application.Current.MainWindow;
+            mw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            mw.Show();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+            e.Handled = true;
         }
     }
 }

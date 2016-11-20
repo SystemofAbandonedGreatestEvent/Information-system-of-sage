@@ -149,9 +149,21 @@ namespace SMIS {
             
             #line default
             #line hidden
+            
+            #line 8 "..\..\..\Window\ContactWindow.xaml"
+            ((SMIS.ContactWindow)(target)).MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(this.Window_MouseLeftButtonDown);
+            
+            #line default
+            #line hidden
             return;
             case 2:
             this.btn_home = ((System.Windows.Controls.Button)(target));
+            
+            #line 11 "..\..\..\Window\ContactWindow.xaml"
+            this.btn_home.Click += new System.Windows.RoutedEventHandler(this.btn_home_Click);
+            
+            #line default
+            #line hidden
             return;
             case 3:
             this.txt_search = ((System.Windows.Controls.TextBox)(target));

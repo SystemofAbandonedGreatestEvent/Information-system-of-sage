@@ -41,7 +41,7 @@ namespace SMIS
         {
             string ID = txt_signupID.Text;
             string PW = txt_signupPW.Password;
-            string sql = "insert into user (ID, Password) values ('" + ID + "', '" + PW + "')";
+            string sql = "insert into user (UserId, Password) values ('" + ID + "', '" + PW + "')";
             dbcon.CreactUpdateDelete(sql);
 
             MessageBox.Show("sign up completed...");
@@ -111,7 +111,7 @@ namespace SMIS
         {
             string ID = txt_signinID.Text;
             string PW = txt_signinPW.Password;
-            String sql = "select * from user where ID='"+ID+"'";
+            String sql = "select * from user where UserId='"+ID+"'";
             int loginCheck = dbcon.CheckLogin(ID, PW, sql);
 
             if (loginCheck.Equals(0))   //ID와 Password 둘 다 맞을때

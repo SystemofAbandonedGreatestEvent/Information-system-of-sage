@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="img_profile" Height="256" Margin="33,10,33,0" VerticalAlignment="Top"/>
+            <Image x:Name="img_thumbnail" Height="256" Margin="33,10,33,0" VerticalAlignment="Top"/>
             <Button x:Name="btn_profileChage" Content="사진 변경" HorizontalAlignment="Left" Margin="33,271,0,0" VerticalAlignment="Top" 
                     Background="#FF272727" Foreground="White" BorderThickness="0" FontSize="14" Click="btn_profileChage_Click"/>
 
@@ -51,7 +51,7 @@
                 -->
                 <Label x:Name="lbl_nickname" Content="닉네임" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Grid.Column="1"/>
                 <Label x:Name="lbl_account" Content="계정" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="1"/>
-                <Label x:Name="lbl_statemessage" Content="상태 메세지" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="3"/>
+                <Label x:Name="lbl_comment" Content="상태 메세지" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="3"/>
                 <Label x:Name="lbl_phoneNum" Content="휴대 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="4"/>
                 <Label x:Name="lbl_companyNum" Content="회사 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="5"/>
                 <Label x:Name="lbl_homeNum" Content="집 전화" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1" Grid.Row="6"/>

@@ -13,20 +13,15 @@ using MySql.Data.MySqlClient;
 
 namespace SMIS
 {
-    public class DatabaseControl
+    public partial class DatabaseControl
     {
         Library library;
-
-        /// <summary>
-        /// Database 연동
-        /// </summary>
+    
+        // Database 연동     
         private static String strConn = "Server=sylvester.ipdisk.co.kr;Database=smis;Uid=root;Pwd=noble@2718;";
         private MySqlConnection conn = new MySqlConnection(strConn);
         private MySqlConnection con = new MySqlConnection(strConn);
 
-        /// <summary>
-        /// Database 연결테스트
-        /// </summary>
         public void ConnectionTest()
         {
             try
@@ -46,11 +41,8 @@ namespace SMIS
             {
                 Console.WriteLine(e.StackTrace);
             }
-        }
+        }   //Database 연결테스트
 
-        /// <summary>
-        /// Database에 대한 CRUE
-        /// </summary>
         public void CreactUpdateDelete(string sql)
         {
             try
@@ -84,7 +76,7 @@ namespace SMIS
                 while (rdr.Read())
                 {
                     string tempID, tempPassword;
-                    tempID = rdr.GetString("ID");
+                    tempID = rdr.GetString("UserId");
                     tempPassword = rdr.GetString("Password");
 
                     if (ID.Equals(tempID) && PW.Equals(tempPassword))
@@ -113,7 +105,85 @@ namespace SMIS
                 }
             }
         }
+        
+        public bool IsNull_UserImg(string ID)
+        {
+            String sql = "select isnull(Thumbnail) from user where UserId = '" + ID + "'";
+            try
+            {
+                con.Open();
+                MySqlCommand _cmd = new MySqlCommand(sql, con);
+                MySqlDataReader _rdr = _cmd.ExecuteReader();
+                while (_rdr.Read())
+                {
+                    int temp = _rdr.GetInt16(0);
+                    if (temp.Equals(0))
+                    {
+                        _rdr.Close();
+                        con.Close();
+                        return true;   //DB에 값이 있으면
+                    }
+                }
+                _rdr.Close();
+                con.Close();
+                return false;    //DB에 값이 없으면
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+                return false;
+            }
+            finally
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        
+        private bool IsNull_Column(string table, string col, string ID)
+        {
+            String sql = "select isnull(" + col + ") from " + table + " where UserId = '" + ID + "'";
+            try
+            {
+                con.Open();
+                MySqlCommand _cmd = new MySqlCommand(sql, con);
+                MySqlDataReader _rdr = _cmd.ExecuteReader();
+                while (_rdr.Read())
+                {
+                    int temp = _rdr.GetInt16(0);
+                    if (temp.Equals(0)) //DB에 값이 있으면
+                    {
+                        _rdr.Close();
+                        con.Close();
+                        return false;
+                    }
+                }
+                _rdr.Close();
+                con.Close();
+                return true;    //DB에 값이 없으면
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+                return true;
+            }
+            finally
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+    }
 
+    /// <summary>
+    /// AccountWindow와의 상호작용하는 DataBase 컨트롤러
+    /// </summary>
+    public partial class DatabaseControl
+    {
         public void LoadUserInfo(string ID, String sql, ref string[] userinfo)
         {
             try
@@ -132,8 +202,8 @@ namespace SMIS
 
                     if (!IsNull_Column("user", "NickName", ID))
                         tempnickname = rdr.GetString("NickName");
-                    if (!IsNull_Column("user", "StateMessage", ID))
-                        tempstatemessage = rdr.GetString("StateMessage");
+                    if (!IsNull_Column("user", "Comment", ID))
+                        tempstatemessage = rdr.GetString("Comment");
                     if (!IsNull_Column("user", "PhoneNum", ID))
                         tempphoneNum = rdr.GetString("PhoneNum");
                     if (!IsNull_Column("user", "CompanyNum", ID))
@@ -171,7 +241,7 @@ namespace SMIS
             try
             {
                 conn.Open();
-                String sql = "select ProfileImage from user where ID = '" + ID + "'";
+                String sql = "select Thumbnail from user where UserId = '" + ID + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
@@ -213,10 +283,10 @@ namespace SMIS
             try
             {
                 conn.Open();
-                String sql = "update user set ProfileImage =@profileImage where ID = '" + ID + "'";
+                String sql = "update user set Thumbnail =@Thumbnail where UserId = '" + ID + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.Add("@profileImage", MySqlDbType.MediumBlob);
-                cmd.Parameters["@profileImage"].Value = ImageData;
+                cmd.Parameters.Add("@Thumbnail", MySqlDbType.MediumBlob);
+                cmd.Parameters["@Thumbnail"].Value = ImageData;
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
@@ -261,43 +331,13 @@ namespace SMIS
                 }
             }
         }
+    }
 
-        public bool IsNull_UserImg(string ID)
-        {
-            String sql = "select isnull(ProfileImage) from user where ID = '" + ID + "'";
-            try
-            {
-                con.Open();
-                MySqlCommand _cmd = new MySqlCommand(sql, con);
-                MySqlDataReader _rdr = _cmd.ExecuteReader();
-                while (_rdr.Read())
-                {
-                    int temp = _rdr.GetInt16(0);
-                    if (temp.Equals(0))
-                    {
-                        _rdr.Close();
-                        con.Close();
-                        return true;   //DB에 값이 있으면
-                    }
-                }
-                _rdr.Close();
-                con.Close();
-                return false;    //DB에 값이 없으면
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.StackTrace);
-                return false;
-            }
-            finally
-            {
-                if (con.State == System.Data.ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-        }
-
+    /// <summary>
+    /// DocumentWindow와의 상호작용하는 DataBase 컨트롤러
+    /// </summary>
+    public partial class DatabaseControl
+    {
         public void LoadCategory(TreeView trv_category)
         {
             String sql = "select * from category order by Name asc";
@@ -451,42 +491,41 @@ namespace SMIS
                 }
             }
         }
+    }
 
-        private bool IsNull_Column(string table, string col, string ID)
+    /// <summary>
+    /// ContactWindow와의 상호작용하는 DataBase 컨트롤러
+    /// </summary>
+    public partial class DatabaseControl
+    {
+        public void fillContectList(string ID, ComboBox cmb_selectCategory)
         {
-            String sql = "select isnull(" + col + ") from " + table + " where ID = '" + ID + "'";
+            String sql = "select * from  where Madeby = '" + ID + "'";
+
             try
             {
-                con.Open();
-                MySqlCommand _cmd = new MySqlCommand(sql, con);
-                MySqlDataReader _rdr = _cmd.ExecuteReader();
-                while (_rdr.Read())
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
                 {
-                    int temp = _rdr.GetInt16(0);
-                    if (temp.Equals(0)) //DB에 값이 있으면
-                    {
-                        _rdr.Close();
-                        con.Close();
-                        return false;
-                    }
+                    string name = rdr.GetString("Name");
+                    cmb_selectCategory.Items.Add(name);
                 }
-                _rdr.Close();
-                con.Close();
-                return true;    //DB에 값이 없으면
+                rdr.Close();
+                conn.Close();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.StackTrace);
-                return true;
             }
             finally
             {
-                if (con.State == System.Data.ConnectionState.Open)
+                if (conn.State == System.Data.ConnectionState.Open)
                 {
-                    con.Close();
+                    conn.Close();
                 }
             }
         }
-
     }
 }
