@@ -20,9 +20,9 @@ namespace SMIS.Entities
         public int Type { get; set; }
         public string SenderSid { get; set; }
         public long SendTime { get; set; }
-        public IList<string> ReadMembers { get; set; }
+        //public IList<string> ReadMembers { get; set; }
 
-        public MessageEntity(string strRoomSid, string strContent, int nState, int nType, string strSenderSid, long lSendTime, IList<string> arReadMembers)
+        public MessageEntity(string strContent, int nState, int nType, string strSenderSid, long lSendTime)
         {
             //this.RoomSid = strRoomSid;
             this.Content = strContent;
@@ -33,7 +33,7 @@ namespace SMIS.Entities
             //this.ReadMembers = arReadMembers;
         }
 
-        public MessageEntity(string strMsgSid, string strRoomSid, string strContent, int nState, int nType, string strSenderSid, long lSendTime, IList<string> arReadMembers)
+        public MessageEntity(string strMsgSid, string strContent, int nState, int nType, string strSenderSid, long lSendTime)
         {
             this.Sid = strMsgSid;
             //this.RoomSid = strRoomSid;

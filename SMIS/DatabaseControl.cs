@@ -406,7 +406,7 @@ namespace SMIS
         public void SaveDocument(ref string[] docInfo, String content)
         {
             String sql = "insert into document (Title, Sort, Tag, Writer, RecentModifyDate, Content) values('" + docInfo[1] +
-                "', '" + docInfo[2] + "', '" + docInfo[3] + "', '" + docInfo[0] + "', now(), '" + content + "')";
+                "', '" + docInfo[2] + "', '" + docInfo[3] + "', '" + docInfo[0] + "', CURRENT_TIMESTAMP, '" + content + "')";
 
             try
             {
@@ -466,7 +466,7 @@ namespace SMIS
             String sql = "update Document set Title = '" + docInfo[1] + "'," +
                 "Sort = '" + docInfo[2] +
                 "', Tag = '" + docInfo[3] +
-                "', RecentModifyDate = now()," +
+                "', RecentModifyDate = CURRENT_TIMESTAMP," +
                 " Content = '" + content + "'" +
                 " where Title = '" + preTitle + "'";
 
@@ -498,9 +498,9 @@ namespace SMIS
     /// </summary>
     public partial class DatabaseControl
     {
-        public void fillContectList(string ID, ComboBox cmb_selectCategory)
+        public void fillContectList(string Id, ComboBox cmb_selectCategory)
         {
-            String sql = "select * from  where Madeby = '" + ID + "'";
+            String sql = "select * from  where  = '" + Id + "'";
 
             try
             {
@@ -509,8 +509,7 @@ namespace SMIS
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    string name = rdr.GetString("Name");
-                    cmb_selectCategory.Items.Add(name);
+                   
                 }
                 rdr.Close();
                 conn.Close();

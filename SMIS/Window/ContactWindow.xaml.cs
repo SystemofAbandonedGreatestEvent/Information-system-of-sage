@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SMIS.Entities;
 
 namespace SMIS
 {
@@ -19,6 +20,7 @@ namespace SMIS
     /// </summary>
     public partial class ContactWindow : Window
     {
+        DatabaseControl dbcon;
         public ContactWindow()
         {
             InitializeComponent();
@@ -27,7 +29,8 @@ namespace SMIS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           lsb_contacts.ItemsSource = 
+            //dbcon.fillContectList(UserEntity.id, lsb_contacts);
+            
         }
 
         private void btn_home_Click(object sender, RoutedEventArgs e)
@@ -43,6 +46,11 @@ namespace SMIS
         {
             this.DragMove();
             e.Handled = true;
+        }
+
+        private void btn_newContact_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
