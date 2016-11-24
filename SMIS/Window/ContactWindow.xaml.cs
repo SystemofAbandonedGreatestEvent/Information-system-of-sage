@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using SMIS.Entities;
 
 namespace SMIS
 {
@@ -20,10 +19,12 @@ namespace SMIS
     /// </summary>
     public partial class ContactWindow : Window
     {
-        DatabaseControl dbcon;
+        DatabaseControl dbcon = new DatabaseControl();
+        Library libarary;
         public ContactWindow()
         {
             InitializeComponent();
+            libarary = Library.GetInstance();
             this.MouseLeftButtonDown += Window_MouseLeftButtonDown; ///창이동
         }
 
@@ -50,7 +51,8 @@ namespace SMIS
 
         private void btn_newContact_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!txt_newContact.Text.Equals(""))
+                dbcon.addContect(libarary.get_userID(), txt_newContact.Text);
         }
     }
 }

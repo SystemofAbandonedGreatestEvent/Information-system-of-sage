@@ -21,10 +21,10 @@ namespace SMIS.Entities
         public string CompanyNum { get; set; }
         public string Sid { get; set; }
 
-        public UserEntity(string strUserId, string strSid)
+        public UserEntity(string strId, string strUserId)
         {
+            this.Id = strId;
             this.UserId = strUserId;
-            this.Sid = strSid;
             //this.InterestIds = InterestIds;
         }
     }

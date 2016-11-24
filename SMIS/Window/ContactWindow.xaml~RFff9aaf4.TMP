@@ -18,21 +18,17 @@
             <Grid Grid.Column="0">
                 <TextBox x:Name="txt_search" Height="23" TextWrapping="Wrap" Text="검색" VerticalAlignment="Top" Margin="0,0,0,0" Background="#FF3F3F46" Padding="0,2,0,0"/>
                 <ListBox x:Name="lsb_contacts" Margin="0,28,0,0" Height="407" VerticalAlignment="Top" Background="#FF272727"/>
-                <TextBox x:Name="txt_newContact" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="216" Height="28" VerticalAlignment="Bottom" Margin="0,0,0,2" Background="#FF3F3F46" Padding="0,4,0,0"/>
-                <Button x:Name="btn_newContact" Content="새 연락처" Margin="221,0,0,2" Click="btn_newContact_Click" Height="28" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" Width="120" Height="25" VerticalAlignment="Bottom" Margin="0,0,0,5"/>
+                <Button x:Name="btn_newContact" Content="새 연락처" Margin="221,440,0,2" Click="btn_newContact_Click"/>
 
             </Grid>
 
             <Grid Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="343*"/>
-                    <ColumnDefinition Width="300*"/>
-                </Grid.ColumnDefinitions>
-                <Image x:Name="img_friendThumbnail" HorizontalAlignment="Left" Height="64" Margin="5,0,0,0" VerticalAlignment="Top" Width="64"/>
-                <Label x:Name="lbl_friendNickname" Content="" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
-                <Label x:Name="lbl_friendComment" Content="" HorizontalAlignment="Left" Margin="74,38,0,0" VerticalAlignment="Top" Foreground="White"/>
-                <DataGrid x:Name="dtg_Message" HorizontalAlignment="Left" Margin="5,70,0,40" Width="638" Background="#FF3F3F46" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="txt_inputMessage" Height="35" Margin="5,435,0,0" TextWrapping="Wrap" Text="" Background="#FF3F3F46" VerticalAlignment="Top" Padding="0,8,0,0" Grid.ColumnSpan="2"/>
+                <Image x:Name="img_partnerProfile" Grid.Column="1" HorizontalAlignment="Left" Height="64" Margin="5,0,0,0" VerticalAlignment="Top" Width="64"/>
+                <Label x:Name="lbl_partnerNickname" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+                <Label x:Name="lbl_partnerStateMessage" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="74,38,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <DataGrid x:Name="dtg_Message" HorizontalAlignment="Left" Margin="5,70,0,40" Width="638" Background="#FF3F3F46"/>
+                <TextBox x:Name="txt_inputMessage" Height="35" Margin="5,435,0,0" TextWrapping="Wrap" Text="" Background="#FF3F3F46" VerticalAlignment="Top" Padding="0,8,0,0"/>
             </Grid>
         </Grid>
     </Grid>

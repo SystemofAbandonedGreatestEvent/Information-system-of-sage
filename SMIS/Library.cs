@@ -12,15 +12,17 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using SMIS.Entities;
 
 namespace SMIS
 {
     public class Library
     {
+        //UserEntity UE = new UserEntity();
         private static Library libarary;
-        private string userID;
+        private string userId;
         private string documentTitle;
-
+        
         public static Library GetInstance()
         {
             if (libarary == null) libarary = new Library();
@@ -29,12 +31,12 @@ namespace SMIS
 
         public void set_userID(string userID)
         {
-            this.userID = userID;
+            this.userId = userID;
         }
 
         public string get_userID()
         {
-            return userID;
+            return userId;
         }
 
         public void set_documentName(string documentTitle)

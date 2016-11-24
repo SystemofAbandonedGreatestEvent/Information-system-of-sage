@@ -142,9 +142,9 @@ namespace SMIS
             }
         }
         
-        private bool IsNull_Column(string table, string col, string ID)
+        private bool IsNull_Column(string table, string col, string UserId)
         {
-            String sql = "select isnull(" + col + ") from " + table + " where UserId = '" + ID + "'";
+            String sql = "select isnull(" + col + ") from " + table + " where UserId = '" + UserId + "'";
             try
             {
                 con.Open();
@@ -498,6 +498,36 @@ namespace SMIS
     /// </summary>
     public partial class DatabaseControl
     {
+        public void addContect(string userId, string friendId)
+        {
+            string sql;
+            if (!IsNull_Column("user", "UserId", friendId))
+            {
+                sql = "insert into friends (UserSid, FriendSid) values('" + userId + "', '" + friendId + "')";
+
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    rdr.Close();
+                    conn.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.StackTrace);
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
+
         public void fillContectList(string Id, ComboBox cmb_selectCategory)
         {
             String sql = "select * from  where  = '" + Id + "'";
