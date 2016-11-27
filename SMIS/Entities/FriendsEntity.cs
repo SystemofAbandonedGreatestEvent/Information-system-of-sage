@@ -8,19 +8,14 @@ namespace SMIS.Entities
 {
     class FriendsEntity
     {
-        public string Id { get; private set; }
-        public string UserSID { get; set; }
-        public IList<string> FriendSIDs { get; set; }
+        public string UserId { get; set; }
+        public string FriendId { get; set; }
+        public string FriendNickname { get; set; }
+        public string FriendComment { get; set; }
 
         public FriendsEntity(string strUserSID)
         {
-            this.UserSID = strUserSID;
-        }
-
-        public FriendsEntity(string strUserSID, IList<string> arFriends)
-            : this(strUserSID)
-        {
-            this.FriendSIDs = arFriends;
-        }
+            this.UserId = strUserSID;
+        } 
     }
 }

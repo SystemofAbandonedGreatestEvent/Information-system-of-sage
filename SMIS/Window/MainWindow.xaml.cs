@@ -21,11 +21,13 @@ namespace SMIS
     public partial class MainWindow : Window
     {
         #region 1. 전역변수 및 생성자
-        Library.WindowPoint P;
+        DatabaseControl dbcon = new DatabaseControl();
+        Library library;
         
        public MainWindow()
         {
             InitializeComponent();
+            library = Library.GetInstance();
 
             this.MouseLeftButtonDown += Window_MouseLeftButtonDown;
         }
@@ -41,6 +43,8 @@ namespace SMIS
         //프로그램 종료
         private void btn_exit_Click(object sender, RoutedEventArgs e)   
         {
+            library.set_state("0");
+            dbcon.UpdateState(library.get_Id(), 0);
             this.Close();
         }
 

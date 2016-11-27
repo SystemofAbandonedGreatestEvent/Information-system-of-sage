@@ -10,15 +10,15 @@ using System.IO;
 using System.Windows.Media.Imaging;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace SMIS
 {
     public partial class DatabaseControl
     {
-        Library library;
-    
         // Database 연동     
-        private static String strConn = "Server=sylvester.ipdisk.co.kr;Database=smis;Uid=root;Pwd=noble@2718;";
+        private static string strConn = "Server=sylvester.ipdisk.co.kr;Database=smis;Uid=root;Pwd=noble@2718;";
         private MySqlConnection conn = new MySqlConnection(strConn);
         private MySqlConnection con = new MySqlConnection(strConn);
 
@@ -64,38 +64,28 @@ namespace SMIS
                 }
             }
         }
-
-        public int CheckLogin(string ID, string PW, String sql)
+        
+        public void UpdateState(string strId, int state)
         {
-            int flag = 0;
             try
             {
                 conn.Open();
+                string sql;
+                if (state == 1)
+                    sql = "update user set State = '1' where Id = '" + strId + "'";
+                else if (state == 2)
+                    sql = "update user set State = '2' where Id = '" + strId + "'";
+                else if (state == 3)
+                    sql = "update user set State = '3' where Id = '" + strId + "'";
+                else 
+                    sql = "update user set State = '0' where Id = '" + strId + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    string tempID, tempPassword;
-                    tempID = rdr.GetString("UserId");
-                    tempPassword = rdr.GetString("Password");
-
-                    if (ID.Equals(tempID) && PW.Equals(tempPassword))
-                    {
-                        return flag = 0;
-                    }
-                    else if (tempID.Equals(ID) && tempPassword != PW)
-                    {
-                        return flag = -1;
-                    }
-                }
-                rdr.Close();
+                cmd.ExecuteNonQuery();
                 conn.Close();
-                return flag = -2;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                return flag - 2;
             }
             finally
             {
@@ -106,76 +96,140 @@ namespace SMIS
             }
         }
         
-        public bool IsNull_UserImg(string ID)
+        public bool IsNull_Column_Id(string table, string col, string Id)
         {
-            String sql = "select isnull(Thumbnail) from user where UserId = '" + ID + "'";
+            bool IsNull = true;
+
             try
             {
                 con.Open();
+                string sql = "select isnull(" + col + ") from " + table + " where Id = '" + Id + "'";
                 MySqlCommand _cmd = new MySqlCommand(sql, con);
                 MySqlDataReader _rdr = _cmd.ExecuteReader();
                 while (_rdr.Read())
                 {
-                    int temp = _rdr.GetInt16(0);
-                    if (temp.Equals(0))
-                    {
-                        _rdr.Close();
-                        con.Close();
-                        return true;   //DB에 값이 있으면
-                    }
+                    int tempIsNull = _rdr.GetInt16(0);
+                    if (tempIsNull.Equals(0)) //DB에 값이 있으면
+                        IsNull = false;
                 }
                 _rdr.Close();
                 con.Close();
-                return false;    //DB에 값이 없으면
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.StackTrace);
-                return false;
             }
             finally
             {
                 if (con.State == System.Data.ConnectionState.Open)
                 {
                     con.Close();
+                }
+            }
+            return IsNull;
+        }
+
+        public bool IsNull_Column_UserId(string table, string col, string strUserId)
+        {
+            bool IsNull = true;
+
+            try
+            {
+                con.Open();
+                string sql = "select isnull(" + col + ") from " + table + " where UserId = '" + strUserId + "'";
+                MySqlCommand _cmd = new MySqlCommand(sql, con);
+                MySqlDataReader _rdr = _cmd.ExecuteReader();
+                while (_rdr.Read())
+                {
+                    int tempIsNull = _rdr.GetInt16(0);
+                    if (tempIsNull.Equals(0)) //DB에 값이 있으면
+                        IsNull = false;
+                }
+                _rdr.Close();
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+            finally
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return IsNull;
+        }
+    }
+
+    /// <summary>
+    /// LoginWindow와의 상호작용하는 DataBase 컨트롤러
+    /// </summary>
+    public partial class DatabaseControl
+    {
+        public void Signup(string strUserId, string strPassword)
+        {
+            try
+            {
+                conn.Open();
+                string sql = "insert into user (UserId, Password) values ('" + strUserId + "', '" + strPassword + "')";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
                 }
             }
         }
-        
-        private bool IsNull_Column(string table, string col, string UserId)
+
+        public int CheckLogin(string strUserId, string strPassword)
         {
-            String sql = "select isnull(" + col + ") from " + table + " where UserId = '" + UserId + "'";
+            int checkState = 0;
+
             try
             {
-                con.Open();
-                MySqlCommand _cmd = new MySqlCommand(sql, con);
-                MySqlDataReader _rdr = _cmd.ExecuteReader();
-                while (_rdr.Read())
+                conn.Open();
+                string sql = "select * from user where UserId='" + strUserId + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
                 {
-                    int temp = _rdr.GetInt16(0);
-                    if (temp.Equals(0)) //DB에 값이 있으면
+                    string tempUserId, tempPassword;
+
+                    tempUserId = rdr.GetString("UserId");
+                    tempPassword = rdr.GetString("Password");
+
+                    if (strUserId.Equals(tempUserId) && strPassword.Equals(tempPassword))
                     {
-                        _rdr.Close();
-                        con.Close();
-                        return false;
+                        checkState = 2;
                     }
+                    else
+                        checkState = 1;
                 }
-                _rdr.Close();
-                con.Close();
-                return true;    //DB에 값이 없으면
+                rdr.Close();
+                conn.Close();
             }
-            catch (Exception e)
+            catch
             {
-                MessageBox.Show(e.StackTrace);
-                return true;
+                checkState = 0;
             }
             finally
             {
-                if (con.State == System.Data.ConnectionState.Open)
+                if (conn.State == System.Data.ConnectionState.Open)
                 {
-                    con.Close();
+                    conn.Close();
                 }
             }
+            return checkState;
         }
     }
 
@@ -184,41 +238,52 @@ namespace SMIS
     /// </summary>
     public partial class DatabaseControl
     {
-        public void LoadUserInfo(string ID, String sql, ref string[] userinfo)
+        public void LoadUserInfo(string userId, ref string[] userinfo)
         {
             try
             {
                 conn.Open();
+                string sql = "select * from user where UserId='" + userId + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    string tempnickname = null;
-                    string tempstatemessage = null;
-                    string tempphoneNum = null;
-                    string tempcompanyNum = null;
-                    string temphomeNum = null;
+                    string tempId = null;
+                    string tempNickname = null;
+                    string tempState = null;
+                    string tempComment = null;
+                    string tempAddress = null;
                     string tempEmail = null;
+                    string tempPhoneNum = null;
+                    string tempHomeNum = null;
+                    string tempCompanyNum = null;
 
-                    if (!IsNull_Column("user", "NickName", ID))
-                        tempnickname = rdr.GetString("NickName");
-                    if (!IsNull_Column("user", "Comment", ID))
-                        tempstatemessage = rdr.GetString("Comment");
-                    if (!IsNull_Column("user", "PhoneNum", ID))
-                        tempphoneNum = rdr.GetString("PhoneNum");
-                    if (!IsNull_Column("user", "CompanyNum", ID))
-                        tempcompanyNum = rdr.GetString("CompanyNum");
-                    if (!IsNull_Column("user", "HomeNum", ID))
-                        temphomeNum = rdr.GetString("HomeNum");
-                    if (!IsNull_Column("user", "Email", ID))
+                    tempId = rdr.GetString("Id");
+                    if (!IsNull_Column_Id("user", "NickName", userId))
+                        tempNickname = rdr.GetString("NickName");
+                    tempState = rdr.GetString("State");
+                    if (!IsNull_Column_Id("user", "Comment", userId))
+                        tempComment = rdr.GetString("Comment");
+                    if (!IsNull_Column_Id("user", "Address", userId))
+                        tempAddress = rdr.GetString("Address");
+                    if (!IsNull_Column_Id("user", "Email", userId))
                         tempEmail = rdr.GetString("Email");
+                    if (!IsNull_Column_Id("user", "PhoneNum", userId))
+                        tempPhoneNum = rdr.GetString("PhoneNum");
+                    if (!IsNull_Column_Id("user", "HomeNum", userId))
+                        tempHomeNum = rdr.GetString("HomeNum");
+                    if (!IsNull_Column_Id("user", "CompanyNum", userId))
+                        tempCompanyNum = rdr.GetString("CompanyNum");
 
-                    userinfo[0] = tempnickname;
-                    userinfo[1] = tempstatemessage;
-                    userinfo[2] = tempphoneNum;
-                    userinfo[3] = tempcompanyNum;
-                    userinfo[4] = temphomeNum;
+                    userinfo[0] = tempId;
+                    userinfo[1] = tempNickname;
+                    userinfo[2] = tempState;
+                    userinfo[3] = tempComment;
+                    userinfo[4] = tempAddress;
                     userinfo[5] = tempEmail;
+                    userinfo[6] = tempPhoneNum;
+                    userinfo[7] = tempHomeNum;
+                    userinfo[8] = tempCompanyNum;
                 }
                 rdr.Close();
                 conn.Close();
@@ -236,22 +301,21 @@ namespace SMIS
             }
         }
 
-        public void LoadUserImg(string ID, Image img)
+        public void LoadUserImg(string Id, Image img)
         {
             try
             {
                 conn.Open();
-                String sql = "select Thumbnail from user where UserId = '" + ID + "'";
+                string sql = "select Thumbnail from user where Id = '" + Id + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    byte[] tempImg = (byte[])rdr[0];
-                    MemoryStream mem = new MemoryStream(tempImg);
-                    var imageSource = new BitmapImage();
+                    byte[] buf = (byte[])rdr[0];
+                    MemoryStream stream = new MemoryStream(buf);
+                    BitmapImage imageSource = new BitmapImage();
                     imageSource.BeginInit();
-                    imageSource.StreamSource = mem;
-                    imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                    imageSource.StreamSource = stream;
                     imageSource.EndInit();
                     img.Source = imageSource;
                 }
@@ -271,7 +335,49 @@ namespace SMIS
             }
         }
 
-        public void UpdateUserImg(string ID, string FileName)
+        public void UpdateUserInfo(string Id, ref string[] UserInfo)
+        {
+            string sql = "update user set ";
+            string[] column = { "NickName", "Comment",
+                "PhoneNum","CompanyNum", "HomeNum", "Email" };
+            bool IsSecend = false;
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (!UserInfo[i].Equals("")) continue;
+                
+                if (IsSecend)
+                    sql += ", "; 
+                sql += column[i] + " = '" + UserInfo[0] + "'";
+                IsSecend = true;
+                
+            }
+            sql += " where Id='" + Id + "'";
+
+            if (UserInfo[0].Equals("") && UserInfo[1].Equals("") && UserInfo[2].Equals("") && UserInfo[3].Equals("") &&
+                            UserInfo[4].Equals("") && UserInfo[5].Equals(""))
+                return;
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public void UpdateUserImg(string Id, string FileName)
         {
             FileStream fs;
             BinaryReader br;
@@ -283,7 +389,7 @@ namespace SMIS
             try
             {
                 conn.Open();
-                String sql = "update user set Thumbnail =@Thumbnail where UserId = '" + ID + "'";
+                string sql = "update user set Thumbnail =@Thumbnail where UserId = '" + Id + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.Add("@Thumbnail", MySqlDbType.MediumBlob);
                 cmd.Parameters["@Thumbnail"].Value = ImageData;
@@ -304,33 +410,6 @@ namespace SMIS
                 }
             }
         }
-
-        public void UpdateUserInfo(string ID, String sql, ref string[] userinfo)
-        {
-            try
-            {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-
-                }
-                rdr.Close();
-                conn.Close();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.StackTrace);
-            }
-            finally
-            {
-                if (conn.State == System.Data.ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
-        }
     }
 
     /// <summary>
@@ -340,7 +419,7 @@ namespace SMIS
     {
         public void LoadCategory(TreeView trv_category)
         {
-            String sql = "select * from category order by Name asc";
+            string sql = "select * from category order by Name asc";
             try
             {
                 trv_category.Items.Clear();
@@ -356,7 +435,7 @@ namespace SMIS
                       new Category {ParentId = 2, Name = "S21"},
                       new Category {ParentId = 2, Name = "S22"},
                   };
-                trv_category.ItemsSource = library.GetHerachy(sqlData);
+                //trv_category.ItemsSource = library.GetHerachy(sqlData);
                 rdr.Close();
                 conn.Close();
             }
@@ -373,13 +452,12 @@ namespace SMIS
             }
         }
 
-        public void fillCategoryList(string ID, ComboBox cmb_selectCategory)
+        public void fillCategoryList(string strId, ComboBox cmb_selectCategory)
         {
-            String sql = "select * from category where Madeby = '" + ID + "'";
-
             try
             {
                 conn.Open();
+                string sql = "select * from category where Id = '" + strId + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
@@ -403,14 +481,13 @@ namespace SMIS
             }
         }
 
-        public void SaveDocument(ref string[] docInfo, String content)
+        public void SaveDocument(string strId, ref string[] docInfo)
         {
-            String sql = "insert into document (Title, Sort, Tag, Writer, RecentModifyDate, Content) values('" + docInfo[1] +
-                "', '" + docInfo[2] + "', '" + docInfo[3] + "', '" + docInfo[0] + "', CURRENT_TIMESTAMP, '" + content + "')";
-
             try
             {
                 conn.Open();
+                string sql = "insert into document (Title, Sort, Tag, Writer, RecentModifyDate, Content) values('" + docInfo[0] +
+                                "', '" + docInfo[1] + "', '" + docInfo[2] + "', '" + docInfo[4] + "', CURRENT_TIMESTAMP, '" + docInfo[3] + "')";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Close();
@@ -460,15 +537,15 @@ namespace SMIS
             return "";
         }
 
-        public void UpdateDocument(ref string[] docInfo, String content, string preTitle)
+        public void UpdateDocument(string strId, string strPreparationDate, ref string[] docInfo)
         {
 
-            String sql = "update Document set Title = '" + docInfo[1] + "'," +
-                "Sort = '" + docInfo[2] +
-                "', Tag = '" + docInfo[3] +
+            string sql = "update Document set Title = '" + docInfo[0] + "'," +
+                "Sort = '" + docInfo[1] +
+                "', Tag = '" + docInfo[2] +
                 "', RecentModifyDate = CURRENT_TIMESTAMP," +
-                " Content = '" + content + "'" +
-                " where Title = '" + preTitle + "'";
+                " Content = '" + docInfo[3] + "'" +
+                " where Id = '" + strId + "' and PreparationDate = '"+ strPreparationDate + "'";
 
             try
             {
@@ -498,16 +575,14 @@ namespace SMIS
     /// </summary>
     public partial class DatabaseControl
     {
-        public void addContect(string userId, string friendId)
+        public void AddContect(string strUserId, string strFriendId)
         {
-            string sql;
-            if (!IsNull_Column("user", "UserId", friendId))
+            if (!IsNull_Column_UserId("user", "UserId", strFriendId))
             {
-                sql = "insert into friends (UserSid, FriendSid) values('" + userId + "', '" + friendId + "')";
-
                 try
                 {
                     conn.Open();
+                    string sql = "insert into friends (UserId, FriendId) values('" + strUserId + "', '" + strFriendId + "')";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     rdr.Close();
@@ -525,21 +600,24 @@ namespace SMIS
                     }
                 }
             }
+            else
+                MessageBox.Show("존재하지않는 아이디입니다.");
         }
 
-
-        public void fillContectList(string Id, ComboBox cmb_selectCategory)
+        public void FillContectList(string strId, ListBox lsbContacts)
         {
-            String sql = "select * from  where  = '" + Id + "'";
-
             try
             {
                 conn.Open();
+                string sql = "select * from friends where UserId = '" + strId + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                   
+                    string tempFriendId;
+                    tempFriendId = rdr.GetString("FriendId");
+
+                    lsbContacts.Items.Add(tempFriendId);
                 }
                 rdr.Close();
                 conn.Close();
@@ -556,5 +634,157 @@ namespace SMIS
                 }
             }
         }
+
+        public void SelectContect(string strFriendId, ref string[] friendInfo)
+        {
+            try
+            {
+                conn.Open();
+                string sql = "select * from user" +
+                    " where UserId = '" + strFriendId + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    string tempFriendId;
+                    string tempFriendNickname;
+                    string tempFriendComment;
+                    tempFriendId = rdr.GetString("UserId");
+                    tempFriendNickname = rdr.GetString("Nickname");
+                    tempFriendComment = rdr.GetString("Comment");
+
+                    friendInfo[0] = tempFriendId;
+                    friendInfo[1] = tempFriendNickname;
+                    friendInfo[2] = tempFriendComment;
+                }
+                rdr.Close();
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public void UploadFile(string strUserId, string strFriendId, string strFileName)
+        {
+            FileStream fs;
+            BinaryReader br;
+            byte[] Data;
+            fs = new FileStream(strFileName, FileMode.Open, FileAccess.Read);
+            br = new BinaryReader(fs);
+            Data = br.ReadBytes((int)fs.Length);
+
+            try
+            {
+                conn.Open();
+                string sql = "insert into message (Sid, SenderSid, Content) " +
+                    "values('" + strFriendId + "', '" + strUserId + "', @Content)";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Content", MySqlDbType.MediumBlob);
+                cmd.Parameters["@Content"].Value = Data;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                br.Close();
+                fs.Close();
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public void DownloadFile(string strId, string strFileName)
+        {
+            FileStream fs;
+            BinaryWriter bw;
+            try
+            {
+                conn.Open();
+                string sql = "select Content from message where Id = '" + strId + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    byte[] buf = (byte[])rdr[0];
+                    fs = new FileStream(strFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                    bw = new BinaryWriter(fs);
+                    bw.Write(buf);
+                    bw.Close();
+                }
+                rdr.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+        
+        public void GetData(string strUserid, string strFriendId, DataGrid dtg_Message)
+        {
+            string sql = "select Id, SendTime from message " +
+                "where Sid = '" + strFriendId + "' or SenderSid = '" + strUserid + "'";
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            da.Fill(dt);
+            dtg_Message.DataContext = dt;
+        }
+
+        public void FillMessageList(string strUserid, string strFriendId, ListBox lsbMessage)
+        {
+            try
+            {
+                conn.Open();
+                string sql = "select Id, SendTime from message " +
+                "where Sid = '" + strFriendId + "' or SenderSid = '" + strUserid + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    string tempId;
+                    string tempSendTime;
+                    tempId = rdr.GetString("Id");
+                    tempSendTime = rdr.GetString("SendTime");
+                    string item = string.Format("Id: {0}   |   SendTime: {1}", tempId, tempSendTime);
+                    lsbMessage.Items.Add(item);
+                }
+                rdr.Close();
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+
     }
 }

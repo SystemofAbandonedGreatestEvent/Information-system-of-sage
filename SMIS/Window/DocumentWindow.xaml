@@ -38,13 +38,13 @@
                     <RowDefinition Height="90*"/>
                 </Grid.RowDefinitions>
                 
-                <TextBox x:Name="txt_title" TextWrapping="Wrap" Text="제목" FontSize="26" Margin="0,0,0,2" Background="#FF3F3F46" Grid.Row="0" SelectionChanged="txt_title_SelectionChanged"/>
+                <TextBox x:Name="txt_title" TextWrapping="Wrap" Text="제목 없음" FontSize="26" Margin="0,0,0,2" Background="#FF3F3F46" Grid.Row="0" GotFocus="txt_title_GotFocus" LostFocus="txt_title_LostFocus"/>
                 <ToolBarTray Background="#FF272727" Margin="0,2,0,2" Grid.Row="1">
                     <ToolBar Band="0" Margin="0,2,-402,2" Height="25" Background="#FF272727" HorizontalAlignment="Left" Width="641">
-                        <ComboBox x:Name="cmb_selectCategory" Foreground="Black" Width="200" SelectionChanged="cmb_selectCategory_SelectionChanged"/>
+                        <ComboBox x:Name="cmb_selectCategory" Foreground="Black" Width="200"/>
                         <Button x:Name="btn_addCategory" Content="분류추가" Foreground="White" Margin="2,0,2,0"/>
                         <Separator Foreground="White"/>
-                        <TextBox x:Name="txt_tag" Text="태그" Background="#FF272727" Foreground="White" Width="120" BorderThickness="0" GotFocus="txt_tag_GotFocus" LostFocus="txt_tag_LostFocus" SelectionChanged="txt_tag_SelectionChanged"/>                        
+                        <TextBox x:Name="txt_tag" Text="태그" Background="#FF272727" Foreground="White" Width="120" BorderThickness="0" GotFocus="txt_tag_GotFocus" LostFocus="txt_tag_LostFocus"/>                        
                         <Button x:Name="lbl_nowTime" Foreground="White" IsEnabled="False" HorizontalAlignment="Right" Margin="160,0,0,0"/>
                     </ToolBar>
                     <ToolBar Band="1" Margin="0,2,-507,2" Height="25" Background="#FF272727" HorizontalAlignment="Left" Width="641">

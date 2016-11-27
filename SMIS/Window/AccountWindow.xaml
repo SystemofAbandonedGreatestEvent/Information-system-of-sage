@@ -62,8 +62,8 @@
                      /// </summary>
                 -->
                 <TextBox x:Name="txt_nickname" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Visibility="Hidden"/>
-                <ComboBox x:Name="cmb_state" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="120" Grid.Row="2"/>
-                <TextBox x:Name="txt_statemessage" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="3" Visibility="Hidden"/>
+                <ComboBox x:Name="cmb_state" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="120" Grid.Row="2" SelectionChanged="cmb_state_SelectionChanged"/>
+                <TextBox x:Name="txt_comment" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="3" Visibility="Hidden"/>
                 <TextBox x:Name="txt_phoneNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="4" Visibility="Hidden"/>
                 <TextBox x:Name="txt_companyNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="5" Visibility="Hidden"/>
                 <TextBox x:Name="txt_homeNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FF3F3F46" Grid.Row="6" Visibility="Hidden"/>
