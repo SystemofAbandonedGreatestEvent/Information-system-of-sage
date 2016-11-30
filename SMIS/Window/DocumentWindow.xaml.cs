@@ -35,26 +35,26 @@ namespace SMIS
             libarary = Library.GetInstance();
             Id = libarary.get_userId();
 
-            this.MouseLeftButtonDown += Window_MouseLeftButtonDown; ///창이동
-            lbl_nowTime.Content = DateTime.Now.ToString("yyyy-MM-dd");  ///현재날짜
+            this.MouseLeftButtonDown += Window_MouseLeftButtonDown; //창이동
+            lbl_nowTime.Content = DateTime.Now.ToString("yyyy-MM-dd");  //현재날짜받기
             dbcon.fillCategoryList(Id, cmb_selectCategory);
 
-            /// 도구창에 대한 상호 작용 논리
-            cmb_fontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);   ///폰트스타일
+            // 도구창에 대한 상호 작용 논리
+            cmb_fontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);   //폰트스타일
             cmb_fontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 }; ///폰트사이즈
             cmb_fontFamily.SelectedIndex = 153;
             cmb_fontSize.SelectedIndex = 4;
         }
         #endregion
 
-        ///창이동
+        //창이동
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
             e.Handled = true;
         }
 
-        ///메인메뉴로 가기
+        //메인메뉴로 가기
         private void btn_home_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -68,6 +68,8 @@ namespace SMIS
         {
             TreeViewItem root = new TreeViewItem();
             //dbcon.LoadCategory(trv_category);
+
+            
         }
 
         #region 2. 분류 및 태그
@@ -171,6 +173,13 @@ namespace SMIS
 
         }
 
-       
+        private void lsb_category_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (lsb_category.SelectedItems.Count == 1)
+            {
+                string categoryName = lsb_category.SelectedItem.ToString();
+                
+            }
+        }
     }
 }

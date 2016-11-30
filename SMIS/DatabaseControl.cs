@@ -14,6 +14,9 @@ using System.Data;
 
 namespace SMIS
 {
+    /// <summary>
+    /// Common DataBase Controler
+    /// </summary>
     public partial class DatabaseControl
     {
         // Database 연동     
@@ -269,7 +272,7 @@ namespace SMIS
             }
             finally
             {
-                if (conn.State == System.Data.ConnectionState.Open)
+                if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                 }
@@ -390,25 +393,35 @@ namespace SMIS
     /// </summary>
     public partial class DatabaseControl
     {
-        public void LoadCategory(TreeView trv_category)
+        public void LoadCategoryTree(string strId,TreeView trvCategory)
         {
-            string sql = "select * from category order by Name asc";
             try
             {
-                trv_category.Items.Clear();
+                trvCategory.Items.Clear();
                 conn.Open();
+                string sql = "select * from category where Id = '" + strId + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.Read())
+                {
+                    //레코드에서 부모 Key를 가져옴
+                    string tempParentKey = rdr.GetInt32("ParentId").ToString();
+                    //Items 콜렉션과 부모 Key를 가지고 함수 호출
+                    TreeViewItem triParent = SerchNode(trvCategory.Items, tempParentKey);
+                    
+                    //레코드에서 자신의 Key을 가져옴
+                    string tempKey = rdr.GetInt32("ChildId").ToString();
+                   
+                    //레코드에서 자신의 Item 이름을 가져옴
+                    string tempCategryName = rdr.GetString("Name");
 
-                var sqlData = new List<Category>
-                  {
-                      new Category {ParentId = null, Name = "F1"},
-                      new Category {ParentId = null, Name = "F2"},
-                      new Category {ParentId = 1, Name = "S1"},
-                      new Category {ParentId = 2, Name = "S21"},
-                      new Category {ParentId = 2, Name = "S22"},
-                  };
-                //trv_category.ItemsSource = library.GetHerachy(sqlData);
+                    TreeViewItem triChild = new TreeViewItem();
+                    triChild.ItemsSource = tempCategryName;
+
+                    //부모노드에 추가
+                    triParent.Items.Add(triChild);
+                    //bool Exist = IsExist(trvCategory, temLocation + "\\" + tempCategryName, "\\");
+                }
                 rdr.Close();
                 conn.Close();
             }
@@ -418,11 +431,48 @@ namespace SMIS
             }
             finally
             {
-                if (conn.State == System.Data.ConnectionState.Open)
+                if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                 }
             }
+        }
+
+        /*private bool IsExist(TreeView trv, string path, params string[] Splitter)
+        {
+            string[] a = path.Split(Splitter, StringSplitOptions.None);
+            foreach (ItemCollection objTreeviewItem in trv.Items)
+            {
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if (objTreeviewItem.ToString().Equals("text"))
+                    {
+
+                    }
+                }
+                //here you have your treeview item.
+            }
+            for (int i = 0; i < trv.Items.Count; i++)
+            {
+                //trv_category.Items.GetItemAt(i);
+            }
+        }*/
+
+        private TreeViewItem SerchNode(ItemCollection objItems, string strKey)
+        {   
+            //Nodes의 node를 가지고 찾을 때까지 반복합니다.
+            foreach (TreeViewItem objTreeviewItem in objItems)
+            {
+                if (objTreeviewItem.ToString().Equals(strKey)) return objTreeviewItem;
+
+                //없을 경우 하위 Nodes를 가지고 다시 SerchNode를 호출합니다.
+                TreeViewItem fineItem = SerchNode(objTreeviewItem., strKey);
+
+                //하위노드 검색 결과를 비교하여 Null이 아닐경우(찾을 경우) Item을 리턴합니다.
+                if (fineItem != null) return fineItem;
+            }
+            //검색 결과 조건에 맞는 Node가 없을 경우 Null을 리턴합니다.
+            return null;
         }
 
         public void fillCategoryList(string strId, ComboBox cmb_selectCategory)
