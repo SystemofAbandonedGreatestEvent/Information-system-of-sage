@@ -94,7 +94,6 @@ namespace SMIS
             if (ofd.ShowDialog() == true)
             {
                 string FileName = ofd.FileName;
-
                 dbcon.UploadFile(libarary.get_userId(), libarary.get_friendId(), FileName);
             }
             //dbcon.GetData(libarary.get_userId(), libarary.get_friendId(), dtg_Message);
@@ -118,7 +117,6 @@ namespace SMIS
                 {
                     string strFileName = dfd.FileName;
                     dbcon.DownloadFile(Id, strFileName);
-                    
                 }
             }
         }

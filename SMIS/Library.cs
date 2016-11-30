@@ -131,7 +131,8 @@ namespace SMIS
         }
 
         public List<string> State = new List<string>
-        {   "오프라인",
+        {
+            "오프라인",
             "온라인",
             "자리 비움",
             "다른 용무중"

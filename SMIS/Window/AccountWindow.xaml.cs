@@ -95,7 +95,7 @@ namespace SMIS
             tempUserInfo[5] = txt_Email.Text;
 
             dbcon.UpdateUserInfo(Id, ref tempUserInfo);
-
+            
             txt_nickname.Visibility = Visibility.Hidden;
             txt_comment.Visibility = Visibility.Hidden;
             txt_phoneNum.Visibility = Visibility.Hidden;
@@ -137,9 +137,11 @@ namespace SMIS
             Image img = new Image();
 
             if (IsDefaultThumbnail)
+                //데이터베이스에 썸네일이 저장되있지 않을 경우
                 img.Source = new BitmapImage(new Uri("/drawable/defaultprofile.png", UriKind.Relative));
             else
             {
+                //데이터베이스에 썸네일이 저장되어 있을 경우
                 dbcon.LoadUserImg(Id, img);
             }
             img.Width = 256;
@@ -149,6 +151,8 @@ namespace SMIS
 
         private void ViewUserInfo() ///유저의 정보를 라벨에 보여주기
         {
+            libarary.set_userInfo(libarary.get_userId());
+
             lbl_nickname.Content = libarary.get_Nickname();
             lbl_account.Content = libarary.get_userId();
             lbl_comment.Content = libarary.get_Comment();

@@ -81,6 +81,7 @@ namespace SMIS
             if (loginCheck.Equals(2))   //Id와 Password 둘 다 맞을때
             {
                 libarary.Initialization(userId);
+                libarary.set_state("1");
                 dbcon.UpdateState(libarary.get_Id(), 1);
                 this.Hide();
                 MainWindow mw = new MainWindow();

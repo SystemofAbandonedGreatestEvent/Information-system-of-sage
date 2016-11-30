@@ -106,7 +106,6 @@ namespace SMIS
             btn_italic.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(FontStyles.Italic));
             temp = rtb_editor.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
             btn_underline.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(TextDecorations.Underline));
-
             temp = rtb_editor.Selection.GetPropertyValue(Inline.FontFamilyProperty);
             cmb_fontFamily.SelectedItem = temp;
             temp = rtb_editor.Selection.GetPropertyValue(Inline.FontSizeProperty);
