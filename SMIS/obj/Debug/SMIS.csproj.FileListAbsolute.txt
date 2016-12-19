@@ -60,3 +60,5 @@ D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\b
 D:\sylve\Documents\Visual studio 2015\Projects\Information system of sage\SMIS\bin\Debug\MySql.Data.xml
 D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\bin\Debug\MySql.Data.dll
 D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\bin\Debug\MySql.Data.xml
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\CreateCategoryWindow.g.cs
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\obj\Debug\Window\CreateCategoryWindow.baml

@@ -120,5 +120,31 @@ namespace SMIS
                 }
             }
         }
+
+        private void DeleteContact_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (lsb_contacts.SelectedItems.Count == 1)
+            {
+                string friendId = lsb_contacts.SelectedItem.ToString();
+                libarary.set_friendInfo(friendId);
+                string userId = libarary.get_userId();
+                dbcon.DeleteContect(friendId, userId);
+                lsb_contacts.Items.Clear();
+                dbcon.FillContectList(libarary.get_userId(), lsb_contacts);
+            }
+        }
+
+        private void DeleteMessage_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (lsb_contacts.SelectedItems.Count == 1)
+            {
+                string id = lsb_message.SelectedItem.ToString();
+                string[] a = id.Split(' ');
+                
+                dbcon.DeleteMessage(a[1]);
+                lsb_message.Items.Clear();
+                dbcon.FillMessageList(libarary.get_userId(), libarary.get_friendId(), lsb_message);
+            }
+        }
     }
 }

@@ -146,10 +146,9 @@ namespace SMIS
     {
         public void set_documentInfo(ref string[] strDocumentInfo)
         {
-            documentEtt.Title = strDocumentInfo[0];
-            documentEtt.Sort = strDocumentInfo[1];
-            documentEtt.Tag = strDocumentInfo[2];
-            documentEtt.Content = strDocumentInfo[3];
+            documentEtt = new DocumentEntity(
+                strDocumentInfo[0], strDocumentInfo[1], strDocumentInfo[3], strDocumentInfo[2]);
+           
         }
 
         public void set_PreparationDate(string strPreparationDate)
@@ -170,11 +169,17 @@ namespace SMIS
     {
         public void set_friendInfo(string strFriendId)
         {
-            string[] tempInfo = new string[4]; 
+            string[] tempInfo = new string[5]; 
             dbcon.SelectContect(strFriendId, ref tempInfo);
             friendsEtt.FriendId = tempInfo[0];
             friendsEtt.FriendNickname = tempInfo[1];
             friendsEtt.FriendComment = tempInfo[2];
+            friendsEtt.Id = tempInfo[3];
+        }
+
+        public string get_fId()
+        {
+            return friendsEtt.Id;
         }
 
         public string get_friendId()

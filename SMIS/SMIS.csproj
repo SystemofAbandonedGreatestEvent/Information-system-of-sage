@@ -69,6 +69,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Window\CreateCategoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window\DocumentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +101,9 @@
     </Compile>
     <Compile Include="Window\ContactWindow.xaml.cs">
       <DependentUpon>ContactWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window\CreateCategoryWindow.xaml.cs">
+      <DependentUpon>CreateCategoryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window\DocumentWindow.xaml.cs">
       <DependentUpon>DocumentWindow.xaml</DependentUpon>

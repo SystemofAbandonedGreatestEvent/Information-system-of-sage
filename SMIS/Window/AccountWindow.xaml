@@ -34,6 +34,7 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Label Content="닉네임:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray"/>
@@ -73,8 +74,9 @@
                      /// 사용자의 정보를 수정, 저장하는 버튼
                      /// </summary>
                 -->
-                <Button x:Name="btn_modify" Content="수정" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,80,0" VerticalAlignment="Bottom" Width="75" Grid.Row="8" Click="btn_modify_Click"/>
-                <Button x:Name="btn_save" Content="저장" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,80,0" VerticalAlignment="Bottom" Width="75" Grid.Row="8" Visibility="Hidden" Click="btn_save_Click"/>
+                <Button x:Name="btn_modify" Content="수정" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,80,0" VerticalAlignment="Bottom" Width="75" Grid.Row="9" Click="btn_modify_Click"/>
+                <Button x:Name="btn_save" Content="저장" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,80,0" VerticalAlignment="Bottom" Width="75" Grid.Row="9" Visibility="Hidden" Click="btn_save_Click"/>
+                <Label Content="이메일:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="Gray" Grid.Row="8"/>
             </Grid>
         </Grid>
     </Grid>

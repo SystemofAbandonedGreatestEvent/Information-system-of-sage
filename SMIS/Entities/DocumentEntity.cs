@@ -40,5 +40,13 @@ namespace SMIS.Entities
             this.RecentModifyDate = strRecentModifyDate;
             this.Writer = strWriter;
         }
+
+        public DocumentEntity(string strTitle, string strSort, string strContent, string strTag)
+        {
+            this.Title = strTitle;
+            this.Sort = strSort;
+            this.Content = strContent;
+            this.Tag = strTag;
+        }
     }
 }
