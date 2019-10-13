@@ -1,0 +1,9 @@
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Client\bin\Debug\Client.exe.config
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Client\bin\Debug\Client.exe
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Client\bin\Debug\Client.pdb
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Client\obj\Debug\Client.Form1.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Client\obj\Debug\Client.Properties.Resources.resources
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Client\obj\Debug\Client.exe
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Client\obj\Debug\Client.pdb
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache

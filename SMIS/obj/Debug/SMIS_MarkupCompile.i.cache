@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMIS\App.xaml
-12884095294
+131313364614
 
-20-1441140070
-15-1778143678
-Window\AccountWindow.xaml;Window\ContactWindow.xaml;Window\DocumentWindow.xaml;Window\LoginWindow.xaml;Window\MainWindow.xaml;Themes\BureauBlack.xaml;Themes\BureauBlue.xaml;Themes\ExpressionDark.xaml;Themes\ExpressionLight.xaml;Themes\ShinyBlue.xaml;Themes\ShinyRed.xaml;Themes\WhistlerBlue.xaml;
+21-43549368
+16-9281356
+Window\AccountWindow.xaml;Window\ContactWindow.xaml;Window\CreateCategoryWindow.xaml;Window\DocumentWindow.xaml;Window\LoginWindow.xaml;Window\MainWindow.xaml;Themes\BureauBlack.xaml;Themes\BureauBlue.xaml;Themes\ExpressionDark.xaml;Themes\ExpressionLight.xaml;Themes\ShinyBlue.xaml;Themes\ShinyRed.xaml;Themes\WhistlerBlue.xaml;
 
 True
 

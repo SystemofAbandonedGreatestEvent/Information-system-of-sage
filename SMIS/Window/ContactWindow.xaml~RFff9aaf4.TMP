@@ -1,0 +1,35 @@
+﻿<Window x:Class="SMIS.ContactWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SMIS"
+        mc:Ignorable="d"
+        Title="ContactWindow" Height="600" Width="1024" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" Background="#FF272727" Loaded="Window_Loaded" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid>
+        <Label Content="Contact" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White" />
+        <Button x:Name="btn_home" Content="home" Margin="0,17,17,0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF3F3F46" Click="btn_home_Click"/>
+        <Grid Margin="30,90,30,40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <TextBox x:Name="txt_search" Height="23" TextWrapping="Wrap" Text="검색" VerticalAlignment="Top" Margin="0,0,0,0" Background="#FF3F3F46" Padding="0,2,0,0"/>
+                <ListBox x:Name="lsb_contacts" Margin="0,28,0,0" Height="407" VerticalAlignment="Top" Background="#FF272727"/>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" Width="120" Height="25" VerticalAlignment="Bottom" Margin="0,0,0,5"/>
+                <Button x:Name="btn_newContact" Content="새 연락처" Margin="221,440,0,2" Click="btn_newContact_Click"/>
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Image x:Name="img_partnerProfile" Grid.Column="1" HorizontalAlignment="Left" Height="64" Margin="5,0,0,0" VerticalAlignment="Top" Width="64"/>
+                <Label x:Name="lbl_partnerNickname" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+                <Label x:Name="lbl_partnerStateMessage" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="74,38,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <DataGrid x:Name="dtg_Message" HorizontalAlignment="Left" Margin="5,70,0,40" Width="638" Background="#FF3F3F46"/>
+                <TextBox x:Name="txt_inputMessage" Height="35" Margin="5,435,0,0" TextWrapping="Wrap" Text="" Background="#FF3F3F46" VerticalAlignment="Top" Padding="0,8,0,0"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

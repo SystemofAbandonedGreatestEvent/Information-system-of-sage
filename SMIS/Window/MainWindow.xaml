@@ -27,14 +27,14 @@
             <Button x:Name="btn_01" Content="" Margin="10" Grid.Row="1" Background="White" Foreground="Black"/>
             <Button x:Name="btn_02" Content="" Margin="10" Grid.Row="2" Background="#FFD85900"/>
             <Button x:Name="btn_exit" Content="끝내기" Margin="10" Grid.Row="2" Grid.Column="5" Background="White" Foreground="Black" Click="btn_exit_Click"/>
-            <Button x:Name="btn_serch" Content="검색" Margin="10" Grid.Column="4" Grid.ColumnSpan="2" Background="White" Foreground="Black"/>
+            <Button x:Name="btn_serch" Content="" Margin="10" Grid.Column="4" Grid.ColumnSpan="2" Background="White" Foreground="Black"/>
             <Button x:Name="btn_contact" Content="연락처" Margin="10" Grid.Column="3" Background="#FFD85900" Click="btn_contact_Click"/>
             <Button x:Name="btn_document" Content="문서관리" Margin="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FF77ADC7" Click="btn_document_Click"/>
             <Button x:Name="btn_03" Content="" Margin="10" Grid.Column="4" Grid.RowSpan="2" Grid.Row="1" Background="#FF77ADC7"/>
-            <Button x:Name="btn_inquiry" Content="문의" Margin="10" Grid.Row="1" Grid.Column="5" Background="#FFD85900"/>
+            <Button x:Name="btn_inquiry" Content="" Margin="10" Grid.Row="1" Grid.Column="5" Background="#FFD85900"/>
             <Button x:Name="btn_04" Content="" Margin="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Background="White" Foreground="Black"/>
             <Button x:Name="btn_05" Content="" Margin="10" Grid.Column="3" Grid.Row="2" Background="White" Foreground="Black"/>
-            <Button x:Name="btn_print" Content="프린트" Margin="10" Grid.Column="3" Grid.Row="1" Background="White" Foreground="Black"/>
+            <Button x:Name="btn_print" Content="" Margin="10" Grid.Column="3" Grid.Row="1" Background="White" Foreground="Black"/>
         </Grid>
     </Grid>
 </Window>

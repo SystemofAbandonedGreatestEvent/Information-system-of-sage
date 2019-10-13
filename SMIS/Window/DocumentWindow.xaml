@@ -21,14 +21,23 @@
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="95*"/>
                 </Grid.RowDefinitions>
-                <TextBox x:Name="txt_search" Height="23" TextWrapping="Wrap" Text="검색" VerticalAlignment="Top" Background="#FF3F3F46"/>
-                <TreeView x:Name="trv_category" Margin="0,2,0,0" Background="#FF272727" Grid.Row="1">
+                <TextBox x:Name="txt_search" TextWrapping="Wrap" Text="검색" Background="#FF3F3F46" Foreground="White" GotFocus="txt_search_GotFocus" LostFocus="txt_search_LostFocus" KeyUp="txt_search_KeyUp"/>
+                <TreeView x:Name="trv_category" Margin="0,2,0,0" Background="#FF272727" Grid.Row="1" Visibility="Hidden">
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                             <TextBlock Text="{Binding Name}"/>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
+                <ListBox x:Name="lsb_category" HorizontalAlignment="Left" Height="443" VerticalAlignment="Top" Width="319" Background="#FF272727" Foreground="White" MouseDoubleClick="lsb_category_MouseDoubleClick" Margin="0,2,0,0" Grid.Row="1">
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="분류생성" Click="mi_categoryCreate_Click"/>
+                            <MenuItem Header="분류삭제" Click="mi_categoryDelete_Click"/>
+                            <MenuItem Header="문서삭제" Click="mi_documentDelete_Click"/>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                </ListBox>
             </Grid>
 
             <Grid Grid.Column="1" Margin="2,2,0,0">
@@ -37,14 +46,13 @@
                     <RowDefinition Height="15*"/>
                     <RowDefinition Height="90*"/>
                 </Grid.RowDefinitions>
-                
-                <TextBox x:Name="txt_title" TextWrapping="Wrap" Text="제목" FontSize="26" Margin="0,0,0,2" Background="#FF3F3F46" Grid.Row="0" SelectionChanged="txt_title_SelectionChanged"/>
+
+                <TextBox x:Name="txt_title" TextWrapping="Wrap" Text="제목 없음" FontSize="26" Margin="0,0,0,2" Background="#FF3F3F46" Grid.Row="0" GotFocus="txt_title_GotFocus" LostFocus="txt_title_LostFocus"/>
                 <ToolBarTray Background="#FF272727" Margin="0,2,0,2" Grid.Row="1">
                     <ToolBar Band="0" Margin="0,2,-402,2" Height="25" Background="#FF272727" HorizontalAlignment="Left" Width="641">
-                        <ComboBox x:Name="cmb_selectCategory" Foreground="Black" Width="200" SelectionChanged="cmb_selectCategory_SelectionChanged"/>
-                        <Button x:Name="btn_addCategory" Content="분류추가" Foreground="White" Margin="2,0,2,0"/>
+                        <ComboBox x:Name="cmb_selectCategory" Foreground="Black" Width="200" Visibility="Collapsed"/>
                         <Separator Foreground="White"/>
-                        <TextBox x:Name="txt_tag" Text="태그" Background="#FF272727" Foreground="White" Width="120" BorderThickness="0" GotFocus="txt_tag_GotFocus" LostFocus="txt_tag_LostFocus" SelectionChanged="txt_tag_SelectionChanged"/>                        
+                        <TextBox x:Name="txt_tag" Text="태그" Background="#FF272727" Foreground="White" Width="120" BorderThickness="0" GotFocus="txt_tag_GotFocus" LostFocus="txt_tag_LostFocus"/>
                         <Button x:Name="lbl_nowTime" Foreground="White" IsEnabled="False" HorizontalAlignment="Right" Margin="160,0,0,0"/>
                     </ToolBar>
                     <ToolBar Band="1" Margin="0,2,-507,2" Height="25" Background="#FF272727" HorizontalAlignment="Left" Width="641">
@@ -55,6 +63,7 @@
                         <ToggleButton x:Name="btn_underline" Content="밑줄" Foreground="White" Command="EditingCommands.ToggleUnderline"/>
                         <Separator Foreground="White"/>
                         <Button x:Name="btn_save" Content="저장" Foreground="White" Click="btn_save_Click"/>
+                        <Button x:Name="btn_update" Content="수정" Foreground="White" Visibility="Collapsed" Click="btn_update_Click"/>
                     </ToolBar>
                 </ToolBarTray>
                 <RichTextBox x:Name="rtb_editor" Margin="0,2,0,0" Background="#FF3F3F46" BorderBrush="White" ScrollViewer.CanContentScroll="True" 

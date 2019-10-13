@@ -1,0 +1,5 @@
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMISClient\bin\Debug\SMISClient.exe.config
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMISClient\bin\Debug\SMISClient.exe
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMISClient\bin\Debug\SMISClient.pdb
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMISClient\obj\Debug\SMISClient.exe
+D:\sylve\Documents\WorkSpace\Visual Studio 2015\Projects\Information system of sage\SMISClient\obj\Debug\SMISClient.pdb

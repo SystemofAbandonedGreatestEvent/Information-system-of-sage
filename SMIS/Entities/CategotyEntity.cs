@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SMIS.Entities
 {
-    class CategotyEntity
+    class CategoryEntity
     {
         public string Id { get; private set; }
         public Dictionary<string, string> Category { get; set; }
 
-        public CategotyEntity(string strId, Dictionary<string, string> strCategory)
+        public CategoryEntity(string strId, Dictionary<string, string> strCategory)
         {
             this.Id = strId;
             this.Category = strCategory;

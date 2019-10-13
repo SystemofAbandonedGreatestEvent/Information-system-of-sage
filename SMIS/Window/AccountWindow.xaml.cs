@@ -23,16 +23,16 @@ namespace SMIS
         #region 1. 전역 변수 및 생성자
         DatabaseControl dbcon = new DatabaseControl();
         Library libarary;
-        string account; /// 유저의 계정
-        string[] userinfo = new string[6];  ///userinfo[0~5]: 닉네임, 상태메시지, 휴대폰 번호, 회사 번호, 집전화 번호, 이메일
+        string Id; /// 유저의 계정
 
         public AccountWindow()
         {
             InitializeComponent();
             libarary = Library.GetInstance();
-            account = libarary.get_userID();    ///유저아이디 받기
+            Id = libarary.get_Id();    ///아이디 받기
             this.MouseLeftButtonDown += Window_MouseLeftButtonDown; ///창이동            
-            cmb_state.ItemsSource = libarary.state; ///상태값 불러오기            
+            cmb_state.ItemsSource = libarary.State; ///상태값 불러오기
+            cmb_state.SelectedIndex = libarary.get_State();
         }
         #endregion
 
@@ -53,10 +53,10 @@ namespace SMIS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)    ///창 로드시
         {
-            ViewUserProfile();  ///유저프로필 이미지 뷰
+            ViewThumbnail();  ///유저프로필 이미지 뷰
 
             ViewUserInfo(); ///유저 프로필 정보 뷰
-        }   
+        }
 
         private void btn_modify_Click(object sender, RoutedEventArgs e) ///유저 프로필 정보 수정버튼
         {
@@ -64,16 +64,16 @@ namespace SMIS
             btn_modify.Visibility = Visibility.Hidden;
             btn_save.Visibility = Visibility.Visible;
 
-            txt_nickname.Text = userinfo[0];
-            txt_statemessage.Text = userinfo[1];
-            txt_phoneNum.Text = userinfo[2];
-            txt_companyNum.Text = userinfo[3];
-            txt_homeNum.Text = userinfo[4];
-            txt_Email.Text = userinfo[5];
+            txt_nickname.Text = libarary.get_Nickname();
+            txt_comment.Text = libarary.get_Comment();
+            txt_phoneNum.Text = libarary.get_PhoneNum();
+            txt_companyNum.Text = libarary.get_CompanyNum();
+            txt_homeNum.Text = libarary.get_HomeNum();
+            txt_Email.Text = libarary.get_Email();
 
             ///수정텍스트박스 보이기
             txt_nickname.Visibility = Visibility.Visible;
-            txt_statemessage.Visibility = Visibility.Visible;
+            txt_comment.Visibility = Visibility.Visible;
             txt_phoneNum.Visibility = Visibility.Visible;
             txt_companyNum.Visibility = Visibility.Visible;
             txt_homeNum.Visibility = Visibility.Visible;
@@ -85,13 +85,19 @@ namespace SMIS
             ///버튼 숨기기 및 보이기
             btn_save.Visibility = Visibility.Hidden;
             btn_modify.Visibility = Visibility.Visible;
-            String sql = UpdateuserinfoSql();
 
-            if (sql != "unknown")
-                dbcon.CreactUpdateDelete(sql);
+            string[] tempUserInfo = new string[6];
+            tempUserInfo[0] = txt_nickname.Text;
+            tempUserInfo[1] = txt_comment.Text;
+            tempUserInfo[2] = txt_phoneNum.Text;
+            tempUserInfo[3] = txt_companyNum.Text;
+            tempUserInfo[4] = txt_homeNum.Text;
+            tempUserInfo[5] = txt_Email.Text;
 
+            dbcon.UpdateUserInfo(Id, ref tempUserInfo);
+            
             txt_nickname.Visibility = Visibility.Hidden;
-            txt_statemessage.Visibility = Visibility.Hidden;
+            txt_comment.Visibility = Visibility.Hidden;
             txt_phoneNum.Visibility = Visibility.Hidden;
             txt_companyNum.Visibility = Visibility.Hidden;
             txt_homeNum.Visibility = Visibility.Hidden;
@@ -110,83 +116,33 @@ namespace SMIS
             if (ofd.ShowDialog() == true)
             {
                 string FileName = ofd.FileName;
-                img_thumbnail.Source = new BitmapImage(new Uri(ofd.FileName,UriKind.Absolute));
+                img_thumbnail.Source = new BitmapImage(new Uri(ofd.FileName, UriKind.Absolute));
                 img_thumbnail.Tag = ofd.FileName;
-                
-                dbcon.UpdateUserImg(account, FileName);
-                ViewUserProfile();
+
+                dbcon.UpdateUserImg(Id, FileName);
+                ViewThumbnail();
             }
         }
 
-        private String UpdateuserinfoSql()  ///유저정보 db업데이트 쿼리
+        private void cmb_state_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string tempNickname, tempStatemessage, tempPhonenum, tempCompanynum, temphomenum, tempEmail;
-            bool flag = false;
-
-            tempNickname = txt_nickname.Text;
-            tempStatemessage = txt_statemessage.Text;
-            tempPhonenum = txt_phoneNum.Text;
-            tempCompanynum = txt_companyNum.Text;
-            temphomenum = txt_homeNum.Text;
-            tempEmail = txt_Email.Text;
-
-            String sql = "update user set ";
-            if (tempNickname != "")
-            {
-                sql += "NickName = '" + txt_nickname.Text + "'";
-                flag = true;
-            }
-            if (tempStatemessage != "")
-            {
-                checkUpdatequarry(ref flag, ref sql);
-                sql += "Comment = '" + txt_statemessage.Text + "'";
-            }
-            if (tempPhonenum != "")
-            {
-                checkUpdatequarry(ref flag, ref sql);
-                sql += "PhoneNum = '" + txt_phoneNum.Text + "'";
-            }
-            if (tempCompanynum != "")
-            {
-                checkUpdatequarry(ref flag, ref sql);
-                sql += "CompanyNum = '" + txt_companyNum.Text + "'";
-            }
-            if (temphomenum != "")
-            {
-                checkUpdatequarry(ref flag, ref sql);
-                sql += "HomeNum = '" + txt_homeNum.Text + "'";
-            }
-            if (tempEmail != "")
-            {
-                checkUpdatequarry(ref flag, ref sql);
-                sql += "Email = '" + txt_Email.Text + "'";
-            }
-            sql += " where UserId='" + account + "'";
-
-            if (tempNickname != "" && tempStatemessage != "" && tempPhonenum != "" && tempCompanynum != "" &&
-                temphomenum != "" && tempEmail != "")
-                sql = "unknown";
-            return sql;
-        }   
-
-        private static void checkUpdatequarry(ref bool flag, ref string sql)    ///여러 update쿼리시 ,설정
-        {
-            if (flag == true)
-                sql += ", ";
-            else
-                flag = true;
+            int state = cmb_state.SelectedIndex;
+            libarary.set_state(state.ToString());
+            dbcon.UpdateState(Id, state);
         }
 
-        private void ViewUserProfile()  ///유저의 프로필 이미지를 보여줌
+        private void ViewThumbnail()  ///유저의 프로필 이미지를 보여줌
         {
-            bool IsDefaultprofileImg = dbcon.IsNull_UserImg(account);
+            bool IsDefaultThumbnail = dbcon.IsNull_Column_Id("user", "Thumbnail", Id);
             Image img = new Image();
 
-            if (!IsDefaultprofileImg)
+            if (IsDefaultThumbnail)
+                //데이터베이스에 썸네일이 저장되있지 않을 경우
                 img.Source = new BitmapImage(new Uri("/drawable/defaultprofile.png", UriKind.Relative));
             else
             {
-                dbcon.LoadUserImg(account, img);
+                //데이터베이스에 썸네일이 저장되어 있을 경우
+                dbcon.LoadUserImg(Id, img);
             }
             img.Width = 256;
             img.Height = 256;
@@ -195,17 +151,17 @@ namespace SMIS
 
         private void ViewUserInfo() ///유저의 정보를 라벨에 보여주기
         {
-            String sql = "select * from user where UserId='" + account + "'";
+            libarary.set_userInfo(libarary.get_userId());
 
-            dbcon.LoadUserInfo(account, sql, ref userinfo);
-
-            lbl_nickname.Content = userinfo[0];
-            lbl_account.Content = account;
-            lbl_comment.Content = userinfo[1];
-            lbl_phoneNum.Content = userinfo[2];
-            lbl_companyNum.Content = userinfo[3];
-            lbl_homeNum.Content = userinfo[4];
-            lbl_Email.Content = userinfo[5];
+            lbl_nickname.Content = libarary.get_Nickname();
+            lbl_account.Content = libarary.get_userId();
+            lbl_comment.Content = libarary.get_Comment();
+            lbl_phoneNum.Content = libarary.get_PhoneNum();
+            lbl_companyNum.Content = libarary.get_CompanyNum();
+            lbl_homeNum.Content = libarary.get_HomeNum();
+            lbl_Email.Content = libarary.get_Email();
         }
+
+
     }
 }
